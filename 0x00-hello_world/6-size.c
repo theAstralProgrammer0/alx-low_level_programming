@@ -3,14 +3,14 @@
 /**
  * main - Entry point
  *
- * Always 0 (Success)
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	puts("Size of a char: 1 byte\(s\)");
-	puts("Size of an int: 4 byte\(s\)");
-	puts("Size of a long int: 4 byte\(s\)");
-	puts("Size of a long long int: 8 byte\(s\)");
-	puts("Size of a float: 4 byte\(s\)");
+	printf("Size of a char: %d bytes\n", sizeof(char));
+	printf("Size of an int: %d bytes\n", sizeof(int));
+	printf("Size of a long int: %d bytes\n", sizeof(long int));
+	printf("Size of a long long: %d bytes\n", sizeof(long long int));
+	printf("Size of a float: %d bytes\n", sizeof(float));
 	return (0);
 }
