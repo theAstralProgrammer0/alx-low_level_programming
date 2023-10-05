@@ -1,6 +1,2 @@
 #!/bin/bash
-<<<<<<< HEAD
 gcc -c $CFILE -o $(echo $CFILE|tr -d '.c').o
-=======
-gcc $CFILE -o $(echo $CFILE | tr -d .c).o
->>>>>>> dd91374ede7726c18df40843c9cfd60d632fbc64
