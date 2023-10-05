@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -o a.out $CFILE && ./a.out > c
+gcc -E main.c -o c
