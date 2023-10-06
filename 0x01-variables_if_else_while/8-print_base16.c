@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char str[] = "123456789abcdef";
+	char str[] = "0123456789abcdef";
 
 	int i = 0;
 
