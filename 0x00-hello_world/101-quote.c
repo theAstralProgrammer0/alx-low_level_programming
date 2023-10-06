@@ -6,11 +6,6 @@
  * main - Entry point
  *
  * Return: Always 1 (Error)
- */
-/**
- * cutchar - Reusable function
- *
- * s - holder
 */
 
 int main(void)
