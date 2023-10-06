@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <errno.h>
 #include <unistd.h>
 
 /**
@@ -10,19 +8,8 @@
 
 int main(void)
 {
-	const char *msg =
+	char msg[] =
 		"and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-	ssize_t len = 0;
-
-	while (msg[len])
-	{
-		 len++;
-	}
-
-	if (write(STDERR_FILENO, msg, len) == -1)
-	{
-		return (1);
-	}
-
+	write(STDERR_FILENO, msg, sizeof(str) - 1);
 	return (1);
 }
