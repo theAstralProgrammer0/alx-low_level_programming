@@ -15,8 +15,7 @@ void print_alphabet(void)
 	char str[] = "abcdefghijklmnopqrstuvwxyz";
 
 	int i;
-
-	int length = strlen(str); 
+	int length = strlen(str);
 
 	for (i = 0; i <= length - 1; i++)
 	{
