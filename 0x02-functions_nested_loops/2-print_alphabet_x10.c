@@ -3,7 +3,7 @@
 #include "main.h"
 
 /**
-  * print_alphabet - Entry Point
+  * print_alphabet_x10 - Entry Point
   *
   * _putchar - function that prints characters
   *
