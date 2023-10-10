@@ -2,6 +2,14 @@
 #include <string.h>
 #include "main.h"
 
+/**
+  * print_alphabet - Entry Point
+  *
+  * _putchar - function that prints characters 
+  *
+  */
+
+
 void print_alphabet(void)
 {
 	char str[] = "abcdefghijklmnopqrstuvwxyz";
@@ -15,12 +23,4 @@ void print_alphabet(void)
 		_putchar(str[i]);
 	}
 	_putchar('\n');
-}
-
-
-int main(void)
-{
-	print_alphabet();
-
-	return (0);
 }
