@@ -5,7 +5,7 @@
 /**
   * print_alphabet - Entry Point
   *
-  * _putchar - function that prints characters 
+  * _putchar - function that prints characters
   *
   */
 
