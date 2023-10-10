@@ -6,9 +6,11 @@ void print_alphabet(void)
 {
 	char str[] = "abcdefghijklmnopqrstuvwxyz";
 
-	for (int i = 0; i <= strlen(str) - 1; i++)
+	int i;
+
+	for (i = 0; i <= strlen(str) - 1; i++)
 	{
-		_putchar(i);
+		_putchar(str[i]);
 	}
 	_putchar('\n');
 }
