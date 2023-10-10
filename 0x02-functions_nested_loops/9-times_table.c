@@ -25,28 +25,20 @@ void times_table(void)
 		{
 			product = a * b;
 
-			switch ((product < 10) && (product != 9))
+			if ((product < 10) && (product != 9))
 			{
-				case 1:
-					{
-						putchar('0' + product);
-						putchar(',');
-						putchar('.');
-						putchar('.');
-						break;
-					}
-				default:
-					{
-						switch ((product > 10) && (product != 9))
-						{
-							case 1:	
-								{
-									putchar('0' + (product / 10));
-									putchar('0' + (product % 10));
-									putchar(',');
-									putchar('.');
-									break;
-								}
+				putchar('0' + product);
+				putchar(',');
+				putchar('.');
+				putchar('.');
+			}
+			if ((product > 10) && (product != 9))
+			{
+				putchar('0' + (product / 10));
+				putchar('0' + (product % 10));
+				putchar(',');
+				putchar('.');
+			}
 							default:
 								break;
 						}
