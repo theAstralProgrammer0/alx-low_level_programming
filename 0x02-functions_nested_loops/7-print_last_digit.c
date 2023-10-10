@@ -23,11 +23,11 @@ int print_last_digit(int n)
 		case 1:
 			n = n + 2 * (-n);
 			m = n % 10;
-			_putchar(m + '0');
+			_putchar(m);
 			return (m);
 		default:
 			m = n % 10;
-			_putchar(m + '0');
+			_putchar(m);
 			return (m);
 	}
 }
