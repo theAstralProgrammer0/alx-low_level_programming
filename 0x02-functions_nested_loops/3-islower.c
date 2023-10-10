@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+#include "main.h"
+
+/**
+  * _islower - Entry Point
+  *
+  * Return: Always 1 (Lower Case)
+  *
+  * Return: Always 0 (Otherwise)
+  *
+  */
+
+
+int _islower(int c)
+{
+	switch (c >= 97 && c <= 122)
+	{
+		case 1:
+			return (1);
+			break;
+		default:
+			return (0);
+			break;
+	}
+}
