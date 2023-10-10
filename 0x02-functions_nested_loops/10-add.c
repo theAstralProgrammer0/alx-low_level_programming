@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "main.h"
+#include <math.h>
 
 /**
  * main - check the code
@@ -7,11 +8,11 @@
  * Return: Always 0.
  */
 
-int main(void)
+int add(int a, int b)
 {
-    int n;
+	int sum;
 
-    n = add(89, 9);
-    printf("%d\n", n);
-    return (0);
+	sum = a + b;
+
+	return (sum);
 }
