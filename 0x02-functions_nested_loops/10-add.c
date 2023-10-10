@@ -3,9 +3,13 @@
 #include <math.h>
 
 /**
- * main - check the code
+ * add - Entry Point
  *
- * Return: Always 0.
+ * @a: first argument to be summed
+ *
+ * @b: second argument to be summed
+ *
+ * Return: Always 0 (Success).
  */
 
 int add(int a, int b)
