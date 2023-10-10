@@ -8,7 +8,9 @@ void print_alphabet(void)
 
 	int i;
 
-	for (i = 0; i <= strlen(str) - 1; i++)
+	int length = strlen(str); 
+
+	for (i = 0; i <= length - 1; i++)
 	{
 		_putchar(str[i]);
 	}
@@ -16,7 +18,9 @@ void print_alphabet(void)
 }
 
 
-void main(void)
+int main(void)
 {
 	print_alphabet();
+
+	return (0);
 }
