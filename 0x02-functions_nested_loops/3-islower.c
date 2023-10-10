@@ -7,7 +7,7 @@
   *
   * Return: Always 1 (Lower Case)
   *
-  * Return: Always 0 (Otherwise)
+  * int c: ASCII value of a character entered in ' ' 
   *
   */
 
