@@ -5,9 +5,9 @@
 /**
   * _islower - Entry Point
   *
-  * Return: Always 1 (Lower Case)
+  * @c: Argument for ASCII value of character passed in double quotes
   *
-  * int c: ASCII value of a character entered in ' ' 
+  * Return: Always 1 (Lower Case)
   *
   */
 
