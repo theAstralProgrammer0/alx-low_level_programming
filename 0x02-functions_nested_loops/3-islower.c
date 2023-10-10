@@ -18,9 +18,7 @@ int _islower(int c)
 	{
 		case 1:
 			return (1);
-			break;
 		default:
 			return (0);
-			break;
 	}
 }
