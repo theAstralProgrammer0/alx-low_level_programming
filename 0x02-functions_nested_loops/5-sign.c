@@ -30,7 +30,7 @@ int print_sign(int n)
 					{
 						case 1:
 							_putchar('+');
-							return(1);
+							return (1);
 						default:
 							break;
 					}
@@ -38,27 +38,3 @@ int print_sign(int n)
 	}
 	return (0);
 }
-/**{
-	switch (n < 0)
-	{
-		case 1:
-			return (-1);
-		default:
-			switch (n == 0)
-			{
-				case 1:
-					return (0);
-				default:
-					switch (n > 0)
-					{
-						case 1:
-							return (1);
-						default:
-							break;
-					}
-			}
-	}
-}
-8
-*/
-
