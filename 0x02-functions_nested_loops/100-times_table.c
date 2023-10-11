@@ -11,41 +11,34 @@
 
 void print_times_table(int n)
 {
-	switch (n > 15 || n < 0)
+	if (!(n > 15 || n < 0))
 	{
-		case 1:
-			break;
-		default:
-			{
-				int a;
-				int b;
-				int product;
+		int a;
+		int b;
+		int product;
 
-				for (a = 0; a <= n; a++)
+		for (a = 0; a <= n; a++)
+		{
+			for (b = 0; b <= n; b++)
+			{
+				product = a * b;
+				if (b != 0)
 				{
-					for (b = 0; b <= n; b++)
+					if (product % 10 == product)
 					{
-						product = a * b;
-						if (b != 0)
-						{
-							if (product % 10 == product)
-							{
-								printf(",   %d", product);
-							}
-							else if (product % 100 == product)
-							{
-								printf(",  %d", product);
-							}
-							else if (product % 1000 == product)
-							{
-								printf(", %d", product);
-							}
-						}
-						else
-							printf("%d", product);
+						printf(",   %d", product);
+					} else if (product % 100 == product)
+					{
+						printf(",  %d", product);
+					} else if (product % 1000 == product)
+					{
+						printf(", %d", product);
 					}
-					printf("\n");
 				}
+				else
+					printf("%d", product);
 			}
+			printf("\n");
+		}
 	}
 }
