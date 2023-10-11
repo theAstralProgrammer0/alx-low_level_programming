@@ -6,7 +6,7 @@
 /**
   * print_last_digit - Entry Point
   *
-  * _putchar - function that prints a character 
+  * _putchar - function that prints a character. 
   *
   * @n: signed integer from main.c arg
   *
