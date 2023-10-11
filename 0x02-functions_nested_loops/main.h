@@ -15,5 +15,6 @@ int add(int, int);
 void print_n_less_equal_98(int n);
 void print_n_greater_98(int n);
 void print_to_98(int n);
+void print_times_table(int n);
 
 #endif
