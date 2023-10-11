@@ -1,6 +1,11 @@
 #include <stdio.h>
 
 /**
+  * times_table - Entry Point
+  *
+  */
+
+/**
 0,..0,..0,..0,..0,..0,..0,..0,..0,..0$
 0,..1,..2,..3,..4,..5,..6,..7,..8,..9$
 0,..2,..4,..6,..8,.10,.12,.14,.16,.18$
@@ -25,32 +30,30 @@ void times_table(void)
 		{
 			product = a * b;
 
-			if ((product < 10) && (product != 9))
+			if (b == 0)
 			{
-				putchar('0' + product);
-				putchar(',');
-				putchar('.');
-				putchar('.');
+				putchar('0' + 0);
 			}
-			if ((product > 10) && (product != 9))
+			else if (product < 10)
 			{
+				putchar(',');
+				putchar(' ');
+				putchar(' ');
+				putchar('0' + product);
+			}
+			else
+			{
+				putchar(',');
+				putchar(' ');
 				putchar('0' + (product / 10));
 				putchar('0' + (product % 10));
-				putchar(',');
-				putchar('.');
-			}
-							default:
-								break;
-						}
-					}
 			}
 
-			if (a == 9 || b == 9)
+			if (b == 9)
 			{
 				putchar('\n');
 			}
-			
 		}
 	}
-}
 
+}
