@@ -13,17 +13,18 @@ void print_to_98(int n)
 	if (n <= 98)
 	{
 		int i;
+
 		for (i = n; i <= 98; i++)
 		{
 			int num = i;
 			int div = 1;
+
 			if (num < 0)
 			{
 				putchar('-');
 				num = -num;
 			}
-			
-			while (num / div  > 9)
+			while (num / div > 9)
 			{
 				div *= 10;
 			}
