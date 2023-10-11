@@ -2,39 +2,11 @@
 #include "main.h"
 
 /**
-void print_to_98(int n)
-{
-	if (n < 98)
-	{
-		for (n = n; n <= 98; n++)
-		{
-			printf("%d", n);
-			n += 1;
+  * print_to_98 - Entry Point
+  *
+  * @n: integer argument from function call
+  */
 
-			if (n != 98)
-			{
-				putchar(',');
-				putchar(' ');
-			}
-		}
-	}
-
-	if (n > 98)
-	{
-		for (n = n; n <= 98; n++)
-		{
-			printf("%d", n);
-			n -= 1;
-
-			if (n != 98)
-			{
-				putchar(',');
-				putchar(' ');
-			}
-		}
-	}
-}
-*/
 
 void print_to_98(int n)
 {
@@ -75,11 +47,7 @@ void print_to_98(int n)
 		{
 			int num = i;
 			int div = 1;
-			if (num < 0)
-			{
-				putchar('-');
-				num = -num;
-			}
+
 			while (num / div > 9)
 			{
 				div *= 10;
@@ -90,7 +58,7 @@ void print_to_98(int n)
 				num %= div;
 				div /= 10;
 			}
-			if (i > 9)
+			if (i > 98)
 			{
 				putchar(',');
 				putchar(' ');

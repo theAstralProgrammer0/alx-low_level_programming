@@ -2,7 +2,8 @@
 
 char _putchar(char ch)
 {
-	char c = putchar(ch);
+	char c;
+	c = putchar(ch);
 
 	return (c);
 }
