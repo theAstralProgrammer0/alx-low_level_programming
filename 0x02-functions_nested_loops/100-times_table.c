@@ -30,15 +30,15 @@ void print_times_table(int n)
 						{
 							if (product % 10 == product)
 							{
-								printf(",...%d", product);
+								printf(",   %d", product);
 							}
 							else if (product % 100 == product)
 							{
-								printf(",..%d", product);
+								printf(",  %d", product);
 							}
 							else if (product % 1000 == product)
 							{
-								printf(",.%d", product);
+								printf(", %d", product);
 							}
 						}
 						else
