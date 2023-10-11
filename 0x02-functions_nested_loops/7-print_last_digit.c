@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "main.h"
-#include <math.h>
+#include <limits.h>
+
 
 /**
   * print_last_digit - Entry Point
@@ -18,16 +19,24 @@ int print_last_digit(int n)
 {
 	int m;
 
-	switch (n < 0)
+	switch (n == INT_MIN)
 	{
 		case 1:
-			n = n + 2 * (-n);
-			m = n % 10;
+			m = 8;
 			_putchar(m + '0');
 			return (m);
 		default:
-			m = n % 10;
-			_putchar(m + '0');
-			return (m);
+			switch (n < 0)
+			{
+				case 1:
+					n = -n;
+					m = n % 10;
+					_putchar(m + '0');
+					return (m);
+				default:
+					m = n % 10;
+					_putchar(m + '0');
+					return (m);
+			}
 	}
 }
