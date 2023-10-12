@@ -17,16 +17,18 @@ int main(void)
 
 	for (num = 1; num <= 100; num++)
 	{
-		if (num % 3 == 0)
-			printf("%s ", F);
-		else if (num % 5 == 0)
-			printf("%s ", B);
-		else if (num % 15 == 0)
-			printf("%s ", FB);
-		else
-			printf("%d ", num);
+		if (num < 100)
+		{
+			if (num % 3 == 0)
+				printf("%s ", F);
+			else if (num % 5 == 0)
+				printf("%s ", B);
+			else if (num % 15 == 0)
+				printf("%s ", FB);
+			else
+				printf("%d ", num);
+		}
+		putchar('\n');
 	}
-	putchar('\n');
-
-	return (0);
+	return (0)
 }
