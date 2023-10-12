@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
-  * _isdigit - Entry Point 
+  * _isdigit - Entry Point
   *
-  * @c: Number to be checked 
+  * @c: Number to be checked
   *
   * Return: 1 if c is a digit, 0 otherwise
   */
