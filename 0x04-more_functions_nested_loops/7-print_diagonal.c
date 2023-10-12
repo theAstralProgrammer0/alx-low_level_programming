@@ -29,11 +29,9 @@ void print_diagonal(int n)
 			}
 			putchar('\n');
 		}
-		putchar('\n');
 	}
 	else if (n <= 0)
 	{
-		putchar('0');
 		putchar('\n');
 	}
 }
