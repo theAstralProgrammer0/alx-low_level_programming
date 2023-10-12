@@ -8,20 +8,27 @@
   */
 
 int main(void)
-{
+{  
+	unsigned int a = 1, b = 2, next;
 	int n = 98;
-	int a = 1, b = 2;
-	int i;
 
-	printf("%d, %d", a, b);
+	printf("%u, %u", a, b);
 
-	for (i = 3; i <= n; i++)
+	for (int i = 3; i <= n; i++)
 	{
-		unsigned long int c = a + b;
-		printf(", %lu", c);
+		next = a + b;
+
+		if (next < 0)
+		{
+			next = -next;
+		}
+
+		printf(", %u", next);
+
 		a = b;
-		b = c;
+		b = next;
 	}
+
 	printf("\n");
 
 	return (0);
