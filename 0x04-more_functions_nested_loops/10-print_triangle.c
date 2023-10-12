@@ -28,9 +28,12 @@ void print_triangle(int size)
 				{
 					putchar('#');
 				}
-			}	
+			}
 			putchar('\n');
 		}
 	}
-	putchar('\n');
+	else if (size == 0)
+	{
+		putchar('\n');
+	}
 }
