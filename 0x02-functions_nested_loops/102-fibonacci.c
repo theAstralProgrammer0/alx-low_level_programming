@@ -10,7 +10,7 @@
 int main(void)
 {
 	int x = 1, y = 2, n;
-	long long z;
+	unsigned long int z;
 	
 	printf("%d, %d, ", x, y);
 
@@ -22,11 +22,11 @@ int main(void)
 		
 		if (n != 47)
 		{
-			printf("%lld, ", z);
+			printf("%ld, ", z);
 		}
 		else
 		{
-			printf("%lld", z);
+			printf("%ld", z);
 		}
 	}
 	printf("\n");
