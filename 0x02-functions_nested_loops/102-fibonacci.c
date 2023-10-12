@@ -22,11 +22,11 @@ int main(void)
 		
 		if (n != 47)
 		{
-			printf("%ld, ", z);
+			printf("%lu, ", z);
 		}
 		else
 		{
-			printf("%ld", z);
+			printf("%lu", z);
 		}
 	}
 	printf("\n");
