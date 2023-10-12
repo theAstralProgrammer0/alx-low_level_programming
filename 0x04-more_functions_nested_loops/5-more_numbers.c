@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
   * more_numbers - Entry Point
@@ -18,16 +17,18 @@ void more_numbers(void)
 	{
 		for (j = 0; j <= 14; j++)
 		{
-			if (i < 10)
+			if (j < 10)
 			{
 				putchar('0' + j);
+
 			}
-			else if (i >= 10)
+			else if (j >= 10)
 			{
-				putchar(atoi(j));
+				putchar('0' + (j / 10));
+				putchar('0' + (j % 10));
 			}
 		}
-		putchar('\n');
+		printf("\n");
 	}
-	putchar('\n');
+	printf("\n");
 }
