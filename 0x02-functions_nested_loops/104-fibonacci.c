@@ -11,10 +11,11 @@ int main(void)
 {  
 	unsigned int a = 1, b = 2, next;
 	int n = 98;
+	int i;
 
 	printf("%u, %u", a, b);
 
-	for (int i = 3; i <= n; i++)
+	for (i = 3; i <= n; i++)
 	{
 		next = a + b;
 
