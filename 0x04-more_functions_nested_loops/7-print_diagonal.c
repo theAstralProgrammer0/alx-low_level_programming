@@ -4,7 +4,7 @@
 /**
   * print_diagonal - Entry Point
   *
-  * Description: This is a C program to print a diagonal based on a given length.
+  * Description: A C program to print a diagonal based on a given length.
   *
   * @n: The length of the diagonal.
   */
