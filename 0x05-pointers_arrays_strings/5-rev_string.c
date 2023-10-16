@@ -18,13 +18,13 @@ void rev_string(char *s)
 	l = strlen(s);
 	li = l - 1;
 
-	for (i = 0; i < l; i++)
+	for (i = 0; i < l / 2; i++)
 	{
 		temp = s[i];
 		s[i] = s[li - i];
 		s[li - i] = temp;
 	}
-	printf("%s", s);
+	printf("%s\n", s);
 
 }
 
