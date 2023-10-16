@@ -3,8 +3,12 @@
 
 /**
   * puts2 - Entry Point
-
-
+  *
+  * Description: The Program prints every other character from a given string
+  *
+  * @str: String parameter passed in from int main
+  *
+  * Return: Nothing
   */
 
 void puts2(char *str)
