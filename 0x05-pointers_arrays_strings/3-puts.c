@@ -15,15 +15,15 @@ void _puts(char *str)
 {
 	int i = 0;
 
-	while(1)
+	while (1)
 	{
-		if (str[i] == '\0')
-			break;
-		else
+		if (str[i] != '\0')
 		{
 			putchar(str[i]);
 			i++;
 		}
+		else
+			break;
 	}
 	putchar('\n');
 }
