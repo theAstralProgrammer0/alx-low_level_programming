@@ -25,7 +25,5 @@ void rev_string(char *s)
 		s[i] = s[li - i];
 		s[li - i] = temp;
 	}
-	printf("%s\n", s);
-
 }
 
