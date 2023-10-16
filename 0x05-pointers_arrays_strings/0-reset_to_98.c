@@ -5,7 +5,7 @@
   *
   * Description: A program to reset a number to 98 using pointers
   *
-  * @*n: Pointer variable to capture address of number
+  * @n: Pointer variable to capture address of number
   *
   * Return: The function does not return anything
   */
