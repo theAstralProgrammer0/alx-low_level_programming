@@ -11,13 +11,13 @@ int main(void)
 
 	printf("%s\n", s1);
 	printf("%s", s2);
-	n = 1;
-	ptr = _strncat(s1, s2, n);
+	
+	ptr = _strncat(s1, s2, 1);
 	printf("%s\n", s1);
 	printf("%s", s2);
 	printf("%s\n", ptr);
-	n = 1098;
-	ptr = _strncat(s1, s2, n);
+
+	ptr = _strncat(s1, s2, 1048);
 	printf("%s", s1);
 	printf("%s", s2);
 	printf("%s", ptr);
