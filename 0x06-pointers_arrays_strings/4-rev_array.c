@@ -1,5 +1,17 @@
 #include <stdio.h>
 
+/**
+  * reverse_array - Entry Point
+  *
+  * Description: This function reverses the elements of an array
+  *
+  * @a: Subject Array
+  *
+  * @n: Size of Array
+  *
+  * Return: Nothing
+  */
+
 void reverse_array(int *a, int n)
 {
 	int i, tmp;
