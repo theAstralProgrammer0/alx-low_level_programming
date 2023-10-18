@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include "string.h"
 
+/**
+  * _strcat - Entry Point
+  *
+  * Description: This function concatenates two strings together
+  *
+  * @src: Source string
+  *
+  * @dest: Destination buffer
+  *
+  * Return: (dest) pointer
+  */
+
 char *_strcat(char *dest, char *src)
 {
 	int i;
