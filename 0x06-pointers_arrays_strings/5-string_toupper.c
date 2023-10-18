@@ -1,10 +1,13 @@
 #include <stdio.h>
+#include <string.h>
 
 char *string_toupper(char *str)
 {
-	int i;
+	int i, len;
 
-	for (i = 0; i < sizeof(str) / sizeof(char); i++)
+	len = strlen(str);
+
+	for (i = 0; i < len; i++)
 	{
 		if (str[i] >= 97 && str[i] <= 122)
 			str[i] = str[i] - 32;
