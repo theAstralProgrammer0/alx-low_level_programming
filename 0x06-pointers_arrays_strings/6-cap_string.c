@@ -12,7 +12,7 @@
 
 char *cap_string(char *str)
 {
-	int i, j, len;
+	int i, len;
 	
 	len = strlen(str);
 
