@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 
+/**
+  * string_toupper - Entry Point
+  *
+  * Description: This function converts all lowercase letters in a string to
+  * uppercase
+  *
+  * @str: String being uppercased
+  *
+  * Return: (str) pointer
+  */
+
 char *string_toupper(char *str)
 {
 	int i, len;
