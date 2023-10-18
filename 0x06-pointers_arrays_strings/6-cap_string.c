@@ -22,7 +22,7 @@ char *cap_string(char *str)
 					41 || str[i] == 44 || str[i] == 46 ||
 					str[i] == 59 || str[i] == 63 || str[i]
 					== 123 || str[i] == 125 || str[i] == 32
-					|| str[i] == '	' || str[i] == '\n') &&  (str[i + 1] >= 97) && (str[i + 1] <= 122))
+					|| str[i] == '\t' || str[i] == '\n') &&  (str[i + 1] >= 97) && (str[i + 1] <= 122))
 		{
 			str[i + 1] = str[i + 1] - 32;
 		}
