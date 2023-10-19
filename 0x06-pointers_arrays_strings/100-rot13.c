@@ -29,6 +29,7 @@ char *rot13(char *str)
 			if (str[i] == no_rot13[j])
 			{
 				str[i] = rot13[j];
+				break;
 			}
 		}
 	}
