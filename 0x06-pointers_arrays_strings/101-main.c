@@ -8,14 +8,28 @@
 int main(void)
 {
     print_number(123);
-    putchar('\n');
+    _putchar('\n');
     print_number(402);
-    putchar('\n');
+    _putchar('\n');
     print_number(1024);
-    putchar('\n');
+    _putchar('\n');
     print_number(0);
-    putchar('\n');
+    _putchar('\n');
     print_number(-98);
-    putchar('\n');
+    _putchar('\n');
+    print_number(-9800000);
+    _putchar('\n');
+    print_number(19028898);
+    _putchar('\n');
+    print_number(9823);
+    _putchar('\n');
+    print_number(-1232343598);
+    _putchar('\n');
+    print_number(-0);
+    _putchar('\n');
+    print_number(-998764574);
+    _putchar('\n');
+    print_number(-333);
+    _putchar('\n');
     return (0);
 }
