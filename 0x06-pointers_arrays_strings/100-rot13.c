@@ -15,17 +15,22 @@
 
 char *rot13(char *str)
 {
-	int i, len;
+	int i;
+	int j;
 
-	len = strlen(str);
-	for (i = 0; i < len; i++)
+	char no_rot13[] =
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if ((str[i] >= 'A' && str[i] <= 'M') || (str[i] >= 'a' && str[i]
-			<= 'm'))
-			str[i] = str[i] + 13;
-		else if ((str[i] >= 'N' && str[i] <= 'Z') || (str[i] >= 'n' &&
-				str[i] <= 'z'))
-			str[i] = str[i] - 13;
+		for (j = 0; no_rot13[j] != '\0'; j++)
+		{
+			if (str[i] == no_rot13[j])
+			{
+				str[i] = rot13[j];
+			}
+		}
 	}
 	return (str);
 }
