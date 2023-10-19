@@ -21,8 +21,8 @@ char *leet(char *str)
 
 	for (i = 0; i < len; i++)
 	{
-		if (leetMap[str[i]])
-			str[i] = leetMap[str[i]];
+		if (leetMap[(unsigned char) str[i]])
+			str[i] = leetMap[(unsigned char) str[i]];
 	}
 
 	return (str);
