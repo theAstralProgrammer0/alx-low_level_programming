@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 
+/**
+  * leet - Entry Point
+  *
+  * Description: A function that maps ASCII characters to its leet character
+  * equivalent
+  *
+  * @str: Input String
+  *
+  * Return: (str) pointer
+  */
+
 char *leet(char *str)
 {
 	char leetMap[256];
