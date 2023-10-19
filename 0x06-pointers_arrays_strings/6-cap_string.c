@@ -7,6 +7,8 @@
   * Description: This function converts every lowercase after a separator to
   * uppercase.
   *
+  * @str: String to be parsed
+  *
   * Return: (str) pointer
   */
 
