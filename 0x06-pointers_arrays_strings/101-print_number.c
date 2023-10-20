@@ -1,30 +1,29 @@
 #include <stdio.h>
+#include "main.h"
+
+/**
+  * print_number - Entry Point
+  *
+  * Description: This function prints any integer utilizing the concept of
+  * recursion.
+  *
+  * @n: Number to be printed
+  * 
+  * Return: Nothing
+  */
 
 void print_number(int n)
 {
-	int div = 1;
-	
+	unsigned int num;
+
 	if (n < 0)
 	{
-		putchar('-');
-		n *= -1;
+		_putchar('-');
+		num = -n;
 	}
-
-	while (n / div >= 10)
-	{
-		div *= 10;
-	}
-	if (n / div < 10)
-	{
-		putchar((n / div) + '0');
-		n %= div;
-	}
-	while (n % div != 0)
-	{
-		div /= 10;
-		putchar((n / div) + '0');
-		n %= div;
-	}
+	else 
+		num = n;
+	if (n / 10)
+		print_number(num / 10);
+	_putchar((num % 10) + '0');
 }
-
-
