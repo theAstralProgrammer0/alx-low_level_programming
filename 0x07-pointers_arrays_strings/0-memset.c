@@ -11,6 +11,8 @@
   * @b: Character to fill set memory space
   *
   * @n: Size of bytes (or space) to be allocated for byte population
+  *
+  * Return: (s) pointer
   */
 
 char *_memset(char *s, char b, unsigned int n)
