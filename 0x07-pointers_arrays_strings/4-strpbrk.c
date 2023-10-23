@@ -3,8 +3,8 @@
 /**
   * _strpbrk - Entry Point
   *
-  * Description: This function searches a main string for the first character in
-  * an accept string that matches any of its characters
+  * Description: This function searches a main string for the first character
+  * in an accept string that matches any of its characters
   *
   * @s: main string being parsed
   *
