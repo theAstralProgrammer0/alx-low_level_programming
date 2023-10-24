@@ -1,5 +1,18 @@
 #include <stdio.h>
 
+/**
+  * _strstr - Entry Point
+  *
+  * Description: This function checks for a substring in the main string and
+  * returns the beginning of the occurence of the string
+  *
+  * @haystack: Main String
+  *
+  * @needle: String Search
+  *
+  * Return: (haystack + i) pointer
+  */
+
 char *_strstr(char *haystack, char *needle)
 {
 	int i, j;
