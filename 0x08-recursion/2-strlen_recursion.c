@@ -1,12 +1,20 @@
 #include <stdio.h>
 
+/**
+  * _strlen_recursion - Entry Point
+  *
+  * Description: This is a function that counts the length of  a string using
+  * recusive function
+  *
+  * @s: String to be parsed
+  *
+  * Return: (count) int
+ */
+
 int _strlen_recursion(char *s)
 {
-	static int count = 0;
-
-	if (*s == '\0')
-		return (count);
-
-	count++;	
-	_strlen_recursion(s + 1);
-}	
+	if (*s != '\0')
+		return (1 + _strlen_recursion(s + 1));
+	else
+		return (0);
+}
