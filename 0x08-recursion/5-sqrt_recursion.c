@@ -23,9 +23,9 @@ int _sqrt_recursion_helper(int n, int min, int max)
 	else if (min == max)
 		return (-1);
 	else if (guess_squared < n)
-		return (_sqrt_recursion_wrapper(n, guess + 1, max));
+		return (_sqrt_recursion_helper(n, guess + 1, max));
 	else
-		return (_sqrt_recursion_wrapper(n, min, guess - 1));
+		return (_sqrt_recursion_helper(n, min, guess - 1));
 }
 
 /**
