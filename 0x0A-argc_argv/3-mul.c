@@ -18,15 +18,6 @@ int main(int argc, char *argv[])
 {
 	int mul;
 
-	if (argc == 3)
-	{
-		int arg1 = atoi(argv[1]);
-		int arg2 = atoi(argv[2]);
-
-		mul = arg1 * arg2;
-		printf("%d\n", mul);
-		return (0);
-	}
 
 	if (argc != 3)
 	{
@@ -34,5 +25,10 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
+	int arg1 = atoi(argv[1]);
+	int arg2 = atoi(argv[2]);
+	
+	mul = arg1 * arg2;
+	printf("%d\n", mul);
 	return (0);
 }
