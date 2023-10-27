@@ -22,12 +22,12 @@ int main(int argc, char *argv[])
 	{
 		int arg1 = atoi(argv[1]);
 		int arg2 = atoi(argv[2]);
-		
+
 		mul = arg1 * arg2;
 		printf("%d\n", mul);
 		return (0);
 	}
-	
+
 	if (argc != 3)
 	{
 		write(1, "Error\n", 7);
