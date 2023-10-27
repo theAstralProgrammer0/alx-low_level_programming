@@ -15,10 +15,6 @@ int main(int argc, char *argv[])
 		printf("%d\n", mul);
 		return (0);
 	}
-	
-	else
-	{
-		write(1, "Error\n", 7);
-		return (1);
-	}
+	write(1, "Error\n", 7);
+	return (1);
 }
