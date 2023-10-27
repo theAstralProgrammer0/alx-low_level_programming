@@ -15,6 +15,9 @@ int main(int argc, char *argv[])
 		printf("%d\n", mul);
 		return (0);
 	}
-	write(1, "Error\n", 7);
-	return (1);
+	if (argc != 3)
+	{
+		write(1, "Error\n", 7);
+		return (1);
+	}
 }
