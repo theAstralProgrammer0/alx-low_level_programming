@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
 	int mul;
 
-	if (argc >= 2)
+	if (argc == 3)
 	{
 		int arg1 = atoi(argv[argc - 2]);
 		int arg2 = atoi(argv[argc - 1]);
