@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		write(1, "Error\n", 7);
+		printf("Error\n");
 		return (1);
 	}
 
