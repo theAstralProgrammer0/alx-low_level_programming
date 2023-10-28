@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 			return (1);
 		}
 
-		else
+		else if
 		{
 			if (argc == 1)
 				printf("%d\n", 0);
