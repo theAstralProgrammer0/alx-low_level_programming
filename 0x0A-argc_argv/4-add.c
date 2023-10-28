@@ -6,12 +6,11 @@ int isNumber(char *digit)
 {
 	while(*digit != '\0')
 	{
-		if (isdigit(*digit) == 0)
+		if (isdigit(*digit) == 1)
 			digit++;
 		else
-			return (1);
+			return (0);
 	}
-	return (0);
 }
 
 int main(int argc, char *argv[])
