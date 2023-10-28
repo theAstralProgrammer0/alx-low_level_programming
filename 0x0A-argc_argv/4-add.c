@@ -26,15 +26,12 @@ int main(int argc, char *argv[])
 			return (1);
 		}
 
-		else if
-		{
-			if (argc == 1)
-				printf("%d\n", 0);
+		if (argc == 1)
+			printf("%d\n", 0);
 
-			sum += atoi(argv[i]);
-		}
+		sum += atoi(argv[i]);
 	}
-	
+
 	printf("%d\n", sum);
 
 	return (0);
