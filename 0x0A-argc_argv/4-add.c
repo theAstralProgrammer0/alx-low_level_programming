@@ -1,16 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 int isNumber(char *digit)
 {
-	while(*digit != '\0')
+	int j;
+
+	for (j = 0; digit[j] != '\0'; j++)
 	{
-		if (isdigit(*digit) == 1)
-			digit++;
-		else
+		if (isdigit(digit[j]) == 0)
 			return (0);
 	}
+
+	return (1);
 }
 
 int main(int argc, char *argv[])
@@ -19,7 +22,7 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		if (isNumber(argv[i]) == 1 || atoi(argv[i]) == 0)
+		if (isNumber(argv[i]) == 0 || atoi(argv[i]) == 0)
 		{
 			printf("Error\n");
 			return (1);
