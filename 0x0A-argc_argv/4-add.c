@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-int isNumber(char *);
-
 int isNumber(char *digit)
 {
 	while(*digit != '\0')
@@ -22,19 +20,19 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		if (isNumber(argv[i]) == 1)
+		if (isNumber(argv[i]) == 0)
 		{
 			printf("Error\n");
 			return (1);
 		}
 
-		if (argc == 1)
+		else
 		{
-			printf("%d\n", 0);
-			return (0);
-		}
+			if (argc == 1)
+				printf("%d\n", 0);
 
-		sum += atoi(argv[i]);
+			sum += atoi(argv[i]);
+		}
 	}
 	
 	printf("%d\n", sum);
