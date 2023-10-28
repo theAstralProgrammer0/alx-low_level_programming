@@ -3,6 +3,19 @@
 #include <ctype.h>
 #include <string.h>
 
+/**
+  * isNumber - Helper function
+  *
+  * Description: Helps iterate over string received from terminal to check if
+  * there exists any non-digit character
+  *
+  * @digit: String from terminal argument
+  *
+  * Return: 1 (if isNumber), 0 (otherwise)
+  */
+
+int isNumber(char *);
+
 int isNumber(char *digit)
 {
 	int j;
@@ -15,6 +28,19 @@ int isNumber(char *digit)
 
 	return (1);
 }
+
+/**
+  * main - Entry Point
+  *
+  * Description: A function that adds all numbers entered in the terminal as
+  * arguments
+  *
+  * @argc: Terminal argument count
+  *
+  * @argv: Array of terminal arguments
+  *
+  * Return: Always 0 (Success)
+  */
 
 int main(int argc, char *argv[])
 {
