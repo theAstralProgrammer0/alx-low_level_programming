@@ -14,8 +14,6 @@
   * Return: 1 (if isNumber), 0 (otherwise)
   */
 
-int isNumber(char *);
-
 int isNumber(char *digit)
 {
 	int j;
