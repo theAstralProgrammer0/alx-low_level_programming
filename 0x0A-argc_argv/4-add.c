@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		if (isNumber(argv[i]) == 0)
+		if (isNumber(argv[i]) == 1)
 		{
 			printf("Error\n");
 			return (1);
