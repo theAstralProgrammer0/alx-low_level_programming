@@ -1,5 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+
+int isNumber(char *);
+
+int isNumber(char *digit)
+{
+	while(*digit != '\0')
+	{
+		if (isdigit(*digit) == 0)
+			digit++;
+		else
+			return (1);
+	}
+	return (0);
+}
 
 int main(int argc, char *argv[])
 {
@@ -7,7 +22,7 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		if (atoi(argv[i]) == 0)
+		if (isNumber(argv[i]) == 1)
 		{
 			printf("Error\n");
 			return (1);
