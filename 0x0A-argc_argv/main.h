@@ -2,7 +2,7 @@
 #define MAIN_H
 
 int isNumber(char[]);
-int coin_finder(int, int, int);
+void coin_finder(int, int, int);
 int main(int, char *[]);
 
 #endif

@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 }
 
 
-int coin_finder(int cents, int coins, int i)
+void coin_finder(int cents, int coins, int i)
 {
 	int change[5] = {25, 10, 5, 2, 1};
 
@@ -59,6 +59,4 @@ int coin_finder(int cents, int coins, int i)
 		cents %= change[i];
 		coin_finder(cents, coins, i + 1);
 	}
-
-	return (0);
 }
