@@ -1,14 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-int coin_finder(int, int, int);
+#include "main.h"
 
 int main(int argc, char *argv[])
 {
 	int cents;
 	int coins;
-
-	cents = atoi(argv[1]);
 
 	if (argc != 2)
 	{
@@ -16,14 +13,19 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	if (cents == 0)
+	else
 	{
-		printf("%d\n", 0);
+		cents = atoi(argv[1]);
+
+		if (cents == 0)
+		{
+			printf("%d\n", 0);
+			return (0);
+		}
+
+		coin_finder(cents, 0, 0);
 		return (0);
 	}
-
-	coin_finder(cents, 0, 0);
-	return (0);
 }
 
 

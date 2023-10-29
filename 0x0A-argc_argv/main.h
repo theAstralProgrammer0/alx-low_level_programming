@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-int _atoi(char *s);
+int coin_finder(int, int, int);
+int main(int, char *[]);
 
 #endif
