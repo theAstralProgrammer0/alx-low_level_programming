@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "main.h"
 
 
@@ -12,7 +13,7 @@ int isNumber(char digitstr[])
 
 	for (i = 0; i < len; i++)
 	{
-		if (isdigit(digitstr[i] == 0))
+		if (isdigit(digitstr[i]) == 0)
 			return (0);
 	}
 
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
 {
 	int cents;
 
-	if (argc != 2 || isNumber(argv[1]) == 1)
+	if (argc != 2 || isNumber(argv[1]) == 0)
 	{
 		printf("Error\n");
 		return (1);
