@@ -1,12 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "main.h"
+
+
+int isNumber(char digitstr[])
+{
+	int i, len;
+	
+	len = strlen(digitstr);
+
+	for (i = 0; i < len; i++)
+	{
+		if (isdigit(digitstr[i] == 0))
+			return (0);
+	}
+
+	return (1);
+}
+
 
 int main(int argc, char *argv[])
 {
 	int cents;
 
-	if (argc != 2)
+	if (argc != 2 || isNumber(argv[1]) == 1)
 	{
 		printf("Error\n");
 		return (1);
