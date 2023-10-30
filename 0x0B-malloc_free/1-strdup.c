@@ -15,10 +15,11 @@
 
 char *_strdup(char *str)
 {
-	if (str == NULL)
-		return (NULL);
 	int i, j;
 	char *dupstr;
+
+	if (str == NULL)
+		return (NULL);
 
 	for (i = 1; *str != '\0'; i++)
 	{
