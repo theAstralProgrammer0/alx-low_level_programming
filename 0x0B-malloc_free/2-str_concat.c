@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+  * str_concat - Entry Point
+  *
+  * Description: A function concatenates two strings by dwnamically allocating
+  * memory for the final string
+  *
+  * @s1: First string
+  *
+  * @s2: Second string
+  *
+  * Return: (concatstr) pointer to final string
+  */
+
 char *str_concat(char *s1, char *s2)
 {
 	int i, j, k;
