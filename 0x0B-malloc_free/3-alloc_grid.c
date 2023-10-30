@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+  * alloc_grid - Entry Point
+  *
+  * Description: The function allocates memory dynamically for a grid of a
+  * specific width and height
+  *
+  * @width: Width of grid
+  *
+  * @height: Height of grid
+  *
+  * Return: (grid) double pointer to array of integer pointers
+  */
+
 int **alloc_grid(int width, int height)
 {
 	int **grid, i, j;
