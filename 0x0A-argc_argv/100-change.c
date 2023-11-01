@@ -4,17 +4,28 @@
 #include <ctype.h>
 #include "main.h"
 
+/**
+  * isNumber - Auxilliary Function
+  *
+  * Description: This function checks if the terminal argument is an
+  * alphanumeric string or if it is negative
+  *
+  * @digitstr: String from terminal
+  *
+  * Return: (0) if digitstr is not a digit, (1) if digitstr is a
+  * digit
+  */
 
 int isNumber(char digitstr[])
 {
 	int i, len;
-	
+
 	len = strlen(digitstr);
 
 	for (i = 0; i < len; i++)
 	{
 		if (digitstr[i] == '-')
-			printf("%d\n", 0);
+			return (0);
 
 		if (isdigit(digitstr[i]) == 0)
 			return (0);
@@ -57,6 +68,8 @@ void coin_finder(int cents, int coins, int i)
 {
 	int change[5] = {25, 10, 5, 2, 1};
 
+	if (cents < 0)
+		return;
 	if (cents == 0)
 		printf("%d\n", coins);
 	else
