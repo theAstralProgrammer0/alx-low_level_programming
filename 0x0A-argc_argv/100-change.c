@@ -56,19 +56,25 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	else if (*argv[1] == '\0')
+	else if (argv[1] == '\0')
+	{
 		printf("%d\n", 0);
+		return (1);
+	}
 
 	else
 	{
+		if (isNumber(argv[1]) == 0)
+		{
+			printf("Error\n");
+			return (1);
+		}
+
 		cents = atoi(argv[1]);
 
 		if (cents <= 0)
-			printf("%d\n", 0);
-
-		else if (isNumber(argv[1]) == 0)
 		{
-			printf("Error\n");
+			printf("%d\n", 0);
 			return (1);
 		}
 
