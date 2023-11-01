@@ -17,3 +17,32 @@ int argvcounter(int ac, char **av)
 
 	return (count);
 }
+
+char *argstostr(int ac, char **av)
+{
+	int i, j, count, position;
+	char *alloc_str;
+
+	if (ac == 0 || av == NULL)
+		return (NULL);
+
+	count = argvcounter(ac, av);
+
+	alloc_str = (char *) calloc(count, sizeof(char));
+
+	if (alloc_str == NULL)
+		return (NULL);
+
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			alloc_str[position] = av[i][j];
+			position++;
+		}
+
+		alloc_str[position++] = '\n';
+	}
+
+	return (alloc_str);
+}
