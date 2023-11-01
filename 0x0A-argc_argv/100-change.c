@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 	{
 		if (isNumber(argv[1]) == 0)
 		{
-			printf("Error\n");
+			printf("0\n");
 			return (1);
 		}
 
