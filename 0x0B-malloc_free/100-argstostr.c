@@ -28,7 +28,7 @@ char *argstostr(int ac, char **av)
 
 	count = argvcounter(ac, av);
 
-	alloc_str = (char *) calloc(count, sizeof(char));
+	alloc_str = (char *) malloc(count * sizeof(char));
 
 	if (alloc_str == NULL)
 		return (NULL);
