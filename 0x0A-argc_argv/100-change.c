@@ -64,6 +64,8 @@ int main(int argc, char *argv[])
 		coin_finder(cents, 0, 0);
 		return (0);
 	}
+
+	return (0);
 }
 
 
