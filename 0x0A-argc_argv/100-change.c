@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	else if (argv[1] == '\0')
+	else if (argv[1][0] == '\0')
 	{
 		printf("%d\n", 0);
 		return (1);
