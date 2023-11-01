@@ -20,7 +20,7 @@ int argvcounter(int ac, char **av)
 
 char *argstostr(int ac, char **av)
 {
-	int i, j, count, position;
+	int i, j, count, position = 0;
 	char *alloc_str;
 
 	if (ac == 0 || av == NULL)
