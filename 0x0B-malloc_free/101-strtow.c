@@ -20,7 +20,6 @@ int wordcounter(char *str)
 			str++;
 		else
 		{
-			
 			while (*str != ' ' && *str != '\0')
 				str++;
 			count++;
@@ -73,7 +72,7 @@ char **strtow(char *str)
 		return (NULL);
 
 	len = wordcounter(str);
-	
+
 	splitstr = malloc((len + 1) * sizeof(char *));
 
 	if (len == 0 || splitstr == NULL)
