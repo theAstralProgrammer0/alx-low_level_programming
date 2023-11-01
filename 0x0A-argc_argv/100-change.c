@@ -24,15 +24,26 @@ int isNumber(char digitstr[])
 
 	for (i = 0; i < len; i++)
 	{
-		if (digitstr[i] == '-')
-			return (0);
-
-		if (isdigit(digitstr[i]) == 0)
+		if ((digitstr[i] == '-') || (isdigit(digitstr[i]) == 0))
 			return (0);
 	}
 
 	return (1);
 }
+
+/**
+  * main - Entry Point
+  *
+  * Description: This function calls the isNumber and coinfinder functions to
+  * parse terminal arguments and print the minimum number of coins to make
+  * change for an amount of money
+  *
+  * @argc: Terminal Argument Count
+  *
+  * @argv: Array of Terminal Argument Strings
+  *
+  * Return: 0 (Success), 1 (Failure)
+  */
 
 
 int main(int argc, char *argv[])
@@ -68,6 +79,21 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
+
+/**
+  * coin_finder - Auxilliary Function
+  *
+  * Description: This function is used to calculte and print the minimum amount
+  * of coins to make change for an amount of money
+  *
+  * @cents: Amount of money passed as terminal argv
+  *
+  * @coins: Amount of coins required to make change for cents
+  *
+  * @i: index to track minimum change
+  *
+  * Return: Nothing
+  */
 
 void coin_finder(int cents, int coins, int i)
 {
