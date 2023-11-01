@@ -39,11 +39,14 @@ int main(int argc, char *argv[])
 {
 	int cents;
 
-	if (argc != 2 || *argv[1] == '\0')
+	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
+
+	else if (*argv[1] == '\0')
+		printf("%d\n", 0);
 
 	else
 	{
