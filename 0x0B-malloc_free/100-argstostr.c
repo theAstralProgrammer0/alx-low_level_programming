@@ -2,6 +2,19 @@
 #include <stdlib.h>
 #include "main.h"
 
+/**
+  * argvcounter - Auxilliary Function
+  *
+  * Description: The function counts all the characters entered into the
+  * terminal as arguments (including the null byte)
+  *
+  * @ac: argc (Terminal argument count)
+  *
+  * @av: argv (Terminal argument array)
+  *
+  * Return: (count) int
+  */
+
 int argvcounter(int ac, char **av)
 {
 	int i, j, count;
@@ -17,6 +30,20 @@ int argvcounter(int ac, char **av)
 
 	return (count);
 }
+
+
+/**
+  * argstostr - Auxilliary Function
+  *
+  * Description: The function allocates memory dynamically and concatenates
+  * with a newline separator
+  *
+  * @ac: argc (Terminal argument count)
+  *
+  * @av: argv (Terminal argument array)
+  *
+  * Return: (count) int
+  */
 
 char *argstostr(int ac, char **av)
 {
