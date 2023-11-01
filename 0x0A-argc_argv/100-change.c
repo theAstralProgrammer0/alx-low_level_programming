@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 	else if (argv[1][0] == '\0')
 	{
 		printf("0\n");
-	/**	return (1);*/
+		return (1);
 	}
 
 	else
@@ -75,11 +75,10 @@ int main(int argc, char *argv[])
 		if (cents < 0)
 		{
 			printf("%d\n", 0);
-			/**return (1);*/
+			return (1);
 		}
 
 		coin_finder(cents, 0, 0);
-		return (0);
 	}
 
 	return (0);
