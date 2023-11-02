@@ -2,6 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+  * _calloc - Entry Point
+  *
+  * Description: A function that mimics the calloc function
+  *
+  * @nmemb: Number of elements in the allocated array memory
+  *
+  * @size: Size of the allocated array memory
+  *
+  * Return: (ptr) to allocated array
+  */
+
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	int comp_size;
