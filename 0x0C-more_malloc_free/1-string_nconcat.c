@@ -2,6 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+  * string_nconcat - Entry Point
+  *
+  * Description: A function that concatenates two strings together with a
+  * couple conditions
+  *
+  * @s1: First string
+  *
+  * @s2: Second string
+  *
+  * @n: Bytes to concat
+  *
+  * Return: (s3) new string
+  */
+
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	unsigned int i, lens1, lens2, position;
