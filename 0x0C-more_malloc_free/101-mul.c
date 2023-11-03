@@ -81,10 +81,12 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-/**	if (atoi(n1) == 0 || atoi(n2) == 0)
+	if (atoi(n1) == 0 || atoi(n2) == 0)
 	{
-		printf("%c\n",'0');
-	}*/
+		printf("0");
+		putchar('\n');
+		return (0);
+	}
 /**	printf("%s, %s", n1, n2);*/
 
 	s = multiplyStrings(n1, n2);
@@ -167,12 +169,6 @@ char *convertIntArrToStr(int *result, int arrLen)
 	}
 
 	retString[arrLen] = '\0';
-
-	if (idx == 0)
-	{
-		printf("0\n");
-		exit(0);
-	}
 	free(result);
 
 	return (retString);
