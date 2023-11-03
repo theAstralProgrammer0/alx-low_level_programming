@@ -84,7 +84,6 @@ int main(int argc, char *argv[])
 	if (atoi(n1) == 0 || atoi(n2) == 0)
 	{
 		printf("%c\n",'0');
-		return (0);
 	}
 /**	printf("%s, %s", n1, n2);*/
 
