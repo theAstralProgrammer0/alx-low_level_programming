@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <unistd.h>
 
 int isNumber(char digitstr[]);
 void *alloc(size_t);
@@ -78,6 +79,12 @@ int main(int argc, char *argv[])
 	{
 		printf("Error\n");
 		exit(98);
+	}
+
+	if (atoi(n1) == 0 || atoi(n2) == 0)
+	{
+		printf("%c\n",'0');
+		return (0);
 	}
 /**	printf("%s, %s", n1, n2);*/
 
