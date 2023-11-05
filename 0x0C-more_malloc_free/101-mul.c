@@ -6,8 +6,7 @@
 
 int isNumber(char digitstr[]);
 void *alloc(size_t);
-char *multiplyStrings(char *, char *);
-char *convertIntArrToStr(int *, int);
+void multiplyStrings(char *, char *);
 
 /**
   * isNumber - Auxilliary Function
@@ -69,7 +68,6 @@ void *alloc(size_t size)
 
 int main(int argc, char *argv[])
 {
-	char *s;
 	char *n1, *n2;
 
 	n1 = argv[1];
@@ -87,12 +85,8 @@ int main(int argc, char *argv[])
 		putchar('\n');
 		return (0);
 	}
-/**	printf("%s, %s", n1, n2);*/
 
-	s = multiplyStrings(n1, n2);
-
-	printf("%s\n", s);
-	free(s);
+	multiplyStrings(n1, n2);
 
 	return (0);
 }
@@ -109,14 +103,13 @@ int main(int argc, char *argv[])
   * Return: (resultString) to the result string
   */
 
-char *multiplyStrings(char *num1, char *num2)
+void multiplyStrings(char *num1, char *num2)
 {
 	int i, j, len1, len2, lenResult, mul, sum, *result;
-	char *resultString;
 
 	len1 = strlen(num1);
 	len2 = strlen(num2);
-	lenResult = len1 + len2 + 1;
+	lenResult = len1 + len2;
 
 	result = (int *) alloc(lenResult * sizeof(int));
 	memset(result, 0, lenResult * sizeof(int));
@@ -133,43 +126,20 @@ char *multiplyStrings(char *num1, char *num2)
 		}
 	}
 
-	resultString = convertIntArrToStr(result, lenResult);
-
-	return (resultString);
-}
-
-/**
-  * convertIntArrToStr - Auxilliary Function
-  *
-  * Description: A function that converts an integer array to a string
-  *
-  * @result: integer array
-  *
-  * @arrLen: Length of the integer array
-  *
-  * Return: (retString) pointer to converted string
-  */
-
-char *convertIntArrToStr(int *result, int arrLen)
-{
-	int i, idx, leadingZeros = 1;
-	char *retString;
-
-	retString = (char *) alloc(arrLen);
-
-	for (i = 0; i < arrLen; i++)
+	for (i = 0; i < lenResult; i++)
 	{
+		int leadingZeros = 1;
+
 		if (result[i] == 0 && leadingZeros)
-			continue; /**Skip leading zeros*/
+			continue;
 		else
 		{
 			leadingZeros = 0;
-			retString[idx++] = result[i] + '0';
+			printf("%d", result[i]);
 		}
 	}
+	putchar('\n');
 
-	retString[arrLen] = '\0';
 	free(result);
-
-	return (retString);
 }
+
