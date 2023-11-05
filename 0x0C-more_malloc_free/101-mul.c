@@ -116,7 +116,7 @@ char *multiplyStrings(char *num1, char *num2)
 
 	len1 = strlen(num1);
 	len2 = strlen(num2);
-	lenResult = len1 + len2;
+	lenResult = len1 + len2 + 1;
 
 	result = (int *) alloc(lenResult * sizeof(int));
 	memset(result, 0, lenResult * sizeof(int));
