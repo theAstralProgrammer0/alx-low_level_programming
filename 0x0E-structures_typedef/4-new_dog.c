@@ -1,6 +1,21 @@
 #include <stdio.h>
 #include "dog.h"
 
+/**
+  * new_dog - Entry Point
+  *
+  * Description: This function creates a new dog object from the parameter
+  * members
+  *
+  * @name: name of the new dog
+  *
+  * @age: age of the new dog
+  *
+  * @owner: owner of the new dog
+  *
+  * Return: (dog_object_ptr) to new dog object
+  */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog_object_ptr;
