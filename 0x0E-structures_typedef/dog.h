@@ -20,8 +20,8 @@ typedef struct dog
 	char *owner;
 } dog_t;
 
-void init_dog(struct dog *, char *, float, char *);
-void print_dog(struct dog *);
+void init_dog(dog_t *, char *, float, char *);
+void print_dog(dog_t *);
 dog_t *new_dog(char *, float, char *);
 
 #endif
