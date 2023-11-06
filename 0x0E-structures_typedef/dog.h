@@ -23,5 +23,6 @@ typedef struct dog
 void init_dog(dog_t *, char *, float, char *);
 void print_dog(dog_t *);
 dog_t *new_dog(char *, float, char *);
+void free_dogs(dog_t *);
 
 #endif
