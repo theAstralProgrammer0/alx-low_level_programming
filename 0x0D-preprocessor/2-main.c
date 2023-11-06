@@ -6,14 +6,16 @@
   *
   * Description: This function prints the name of this file
   *
-  * Return: Nothing
+  * Return: Always 0 (Success)
   */
 
-void main(void)
+int main(void)
 {
 	char *filename;
 
 	filename = __FILE__;
 
 	printf("%s\n", filename);
+
+	return (0);
 }
