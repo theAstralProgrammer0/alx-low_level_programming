@@ -3,6 +3,21 @@
 #include <string.h>
 #include "3-calc.h"
 
+/**
+  * main - Entry Point
+  *
+  * Description: This function takes in the terminal argument count and vector
+  * of the arguments (an array of the strings) from the terminal (stdin) and
+  * performs an arithmetic operation on it depending on the selection by the
+  * user at runtime
+  *
+  * @argc: Terminal argument count
+  *
+  * @argv: Terminal argument vector
+  *
+  * Return: (res) int
+  */
+
 int main(int argc, char *argv[])
 {
 	int a, b, res;
