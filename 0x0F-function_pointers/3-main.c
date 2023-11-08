@@ -18,8 +18,9 @@ int main(int argc, char *argv[])
 	a = atoi(argv[1]);
 	b = atoi(argv[3]);
 	op = argv[2];
+	f = (*get_op_func)(op);
 
-	if (strcmp(op, "+") != 0 && strcmp(op, "-") != 0 && *op != '*' && strcmp(op, "/") != 0 && strcmp(op, "%") != 0)
+	if (!f)
 	{
 		printf("Error\n");
 		exit(99);
@@ -31,7 +32,6 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 
-	f = (*get_op_func)(op);
 	res = f(a, b);
 
 	printf("%d\n", res);
