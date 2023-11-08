@@ -3,7 +3,7 @@
 /**
   * array_iterator - Entry Point
   *
-  * Description: A file that iterates over an array of numbers while calling 
+  * Description: A file that iterates over an array of numbers while calling
   * separate callbacks (int main) to operate on each of the array indices
   *
   * @array: Array to be iterated over
