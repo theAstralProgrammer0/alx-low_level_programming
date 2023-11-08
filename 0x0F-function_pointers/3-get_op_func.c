@@ -5,8 +5,8 @@
 /**
   * get_op_func - Entry Point
   *
-  * Description: This function takes a string as argument and returns a function
-  * pointer based on the string passed
+  * Description: This function takes a string as argument and returns a
+  * function pointer based on the string passed
   *
   * @s: Operator string passed
   *
@@ -17,8 +17,7 @@
 int (*get_op_func(char *s))(int, int)
 {
 	int i = 0;
-	op_t ops[] = 
-	{
+	op_t ops[] = {
 		{"+", op_add},
 		{"-", op_sub},
 		{"*", op_mul},
