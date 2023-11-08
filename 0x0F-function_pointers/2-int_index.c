@@ -3,7 +3,7 @@
   * int_index - Entry Point
   *
   * Description: A function that finds and returns the index of the first
-  * occurence of an integer inside an array that meets a specific comparison 
+  * occurence of an integer inside an array that meets a specific comparison
   * condition
   *
   * @array: Array being iterated over
