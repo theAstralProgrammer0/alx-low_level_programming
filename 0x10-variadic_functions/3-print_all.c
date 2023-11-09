@@ -36,7 +36,7 @@ void print_all(const char * const format, ...)
 				printf("%s", s_value);
 				break;
 			default:
-				break;
+				;
 				
 		}
 		if (*(fmt_string + 1) && (*fmt_string == 'c' || *fmt_string ==
