@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+/**
+  * print_strings - Entry Point
+  *
+  * Dexcription: A function that prints strings in a specified format
+  *
+  * @separator: Separator string
+  *
+  * @n: Number of strings to be printed
+  *
+  * Return: Nothing
+  */
+
 void print_strings(const char *separator, const unsigned int n, ...)
 {
 	size_t i;
@@ -27,4 +39,3 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	putchar('\n');
 	va_end(list);
 }
-			
