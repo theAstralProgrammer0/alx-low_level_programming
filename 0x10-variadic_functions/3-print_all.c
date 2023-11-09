@@ -8,42 +8,42 @@ void print_all(const char * const format, ...)
 	int i_value;
 	char c_value;
 	float f_value;
-	char *s_value;
+	char *s_value, *separator = "";
 
 	va_start(specifier, format);
 	fmt_string = format;
 
-	while (*fmt_string)
+	if(format)
 	{
-		switch (*fmt_string)
+		while (*fmt_string)
 		{
-			case 'c':
-				c_value = va_arg(specifier, int);
-				printf("%c", c_value);
-				break;
-			case 'i':
-				i_value = va_arg(specifier, int);
-				printf("%i", i_value);
-				break;
-			case 'f':
-				f_value = va_arg(specifier, double);
-				printf("%f", f_value);
-				break;
-			case 's':
-				s_value = va_arg(specifier, char *);
-				if (s_value == NULL)
-					s_value = "(nil)";
-				printf("%s", s_value);
-				break;
-			default:
-				;
-				
+			switch (*fmt_string)
+			{
+				case 'c':
+					c_value = va_arg(specifier, int);
+					printf("%s%c",separator, c_value);
+					break;
+				case 'i':
+					i_value = va_arg(specifier, int);
+					printf("%s%i", separator, i_value);
+					break;
+				case 'f':
+					f_value = va_arg(specifier, double);
+					printf("%s%f", separator, f_value);
+					break;
+				case 's':
+					s_value = va_arg(specifier, char *);
+					if (s_value == NULL)
+						s_value = "(nil)";
+					printf("%s%s", separator, s_value);
+					break;
+				default:
+					fmt_string++;
+					continue;
+			}
+			separator = ", ";
+			fmt_string++;
 		}
-		if (*(fmt_string + 1) && (*fmt_string == 'c' || *fmt_string ==
-					'i' || *fmt_string == 'f' || *fmt_string
-					=='s'))
-				printf(", ");
-		fmt_string++;
 	}
 	putchar('\n');
 	va_end(specifier);
