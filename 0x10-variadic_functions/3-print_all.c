@@ -31,19 +31,18 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				s_value = va_arg(specifier, char *);
+				if (s_value == NULL)
+					s_value = "(nil)";
 				printf("%s", s_value);
 				break;
 			default:
 				break;
 				
 		}
-		if (*(fmt_string + 1) != '\0')
-		{
-			if (*fmt_string == 'c' || *fmt_string == 'i' ||
-					*fmt_string == 'f' || *fmt_string ==
-					's')
+		if (*(fmt_string + 1) && (*fmt_string == 'c' || *fmt_string ==
+					'i' || *fmt_string == 'f' || *fmt_string
+					=='s'))
 				printf(", ");
-		}
 		fmt_string++;
 	}
 	putchar('\n');
