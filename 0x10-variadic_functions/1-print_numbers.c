@@ -16,6 +16,8 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 		if (i == 0)
 			printf("%d", num);
+		else if (separator == NULL)
+			printf("%d", num);
 		else
 			printf("%s%d", separator, num);
 	}
