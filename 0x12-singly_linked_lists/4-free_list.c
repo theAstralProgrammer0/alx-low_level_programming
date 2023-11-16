@@ -1,4 +1,4 @@
-#include <stdlib.h>
+
 #include "lists.h"
 
 /**
@@ -13,14 +13,14 @@
 
 void free_list(list_t *head)
 {
-	list_t *nextNode, *temp;
+	list_t *nextNode = NULL, *temp = NULL;
 
 	temp = head;
 
 	if (head == NULL)
 		return;
 
-	while (temp)
+	while (temp != NULL)
 	{
 		nextNode = temp->next;
 
