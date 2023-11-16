@@ -20,7 +20,7 @@ void free_list(list_t *head)
 	if (head == NULL)
 		return;
 
-	while (temp->next)
+	while (temp)
 	{
 		nextNode = temp->next;
 
