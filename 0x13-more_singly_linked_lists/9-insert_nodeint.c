@@ -8,7 +8,7 @@
   * @head: head double pointer
   * @idx: index
   * @n: Node integer data
-  * Return (newnode) pointer to the latest node added to the list
+  * Return: (newnode) pointer to the latest node added to the list
   */
 
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
