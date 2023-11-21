@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include "lists.h"
 
+/**
+  * delete_nodeint_at_index - Entry Point
+  * Description: This function deletes a node at a specific index
+  * @head: double pointer to head node
+  * @index: index
+  * Return: Always 1 (success), -1 (failurre)
+  */
 
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
