@@ -2,22 +2,24 @@
 #include <stdlib.h>
 #include "lists.h"
 
+/**
+  * free_listint - Entry Point
+  * Description: A function that frees an entire linked list
+  * @head: head pointer
+  * Return: (freer) node being freed
+  */
+
 void free_listint(listint_t *head)
 {
 	listint_t *freer, *temp;
 
-	if (head == NULL)
-		return;
-	else
-	{
-		temp = head;
+	temp = head;
 
-		while(temp)
-		{
-			freer = temp;
-			temp = temp->next;
-			free(freer);
-		}
+	while (temp)
+	{
+		freer = temp;
+		temp = temp->next;
+		free(freer);
 	}
 }
 
