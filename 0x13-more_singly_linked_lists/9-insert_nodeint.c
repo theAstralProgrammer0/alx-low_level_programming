@@ -40,8 +40,10 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	{
 		temp = *head;
 
-		while (temp && i < idx)
+		while (i < idx)
 		{
+			if (!temp || !(temp->next))
+				return (NULL);
 			prevnode = temp;
 			temp = temp->next;
 			++i;
