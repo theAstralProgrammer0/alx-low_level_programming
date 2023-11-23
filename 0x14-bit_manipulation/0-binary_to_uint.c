@@ -30,7 +30,7 @@ int isBinary(const char bin_str[])
 }
 
 /**
-  * _pow_recursion - Entry Point
+  * _pow_recursion - Auxilliary Function
   *
   * Description: A function that finds x raised to the power of y
   *
@@ -55,8 +55,11 @@ int _pow_recursion(int x, int y)
 
 /**
   * binary_to_uint - Entry Point
+  *
   * Description: This function converts a binary to an unsigned integer
+  *
   * @b: binary string
+  *
   * Return: (bin_num) the decimal version of the binary string
   */
 
