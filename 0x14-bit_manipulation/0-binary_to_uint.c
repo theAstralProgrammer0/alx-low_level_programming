@@ -68,7 +68,9 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int bin_num = 0;
 	int i, j, len;
 
-	if (!isBinary(b) || !b)
+	if (b == NULL)
+		return (0);
+	if (!isBinary(b))
 		return (0);
 
 	len = strlen(b);
