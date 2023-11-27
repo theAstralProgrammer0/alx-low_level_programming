@@ -41,7 +41,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	while (letters)
 	{
-		bytesRead = read(fileDescriptor, buffer, fileStat.st_size);
+		bytesRead = read(fileDescriptor, buffer, letters);
 		if (bytesRead == -1)
 			return (0);
 		if (bytesRead == 0)
@@ -49,11 +49,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		totalBytesRead += bytesRead;
 		letters -= bytesRead;
 	}
-	bytesWritten = write(STDOUT_FILENO, buffer, fileStat.st_size);
+	bytesWritten = write(STDOUT_FILENO, buffer, totalBytesRead);
 	if (bytesWritten == -1)
 		return (0);
 	close(fileDescriptor);
-	return (totalBytesRead);
+	return (bytesWritten);
 }
 
 
