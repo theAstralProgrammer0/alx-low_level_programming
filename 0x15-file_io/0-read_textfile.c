@@ -4,6 +4,19 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+/**
+  * read_textfile - Entry Point
+  *
+  * Description: This function reads the contents of a text file and writes the
+  * read content to standard output
+  *
+  * @filename: Name of the text file
+  *
+  * @letters: Numner of letters to be printed
+  *
+  * Return: (totalBytesRead) or (bytesWritten) ssize_t
+  */
+
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fileDescriptor;
