@@ -97,5 +97,7 @@ int main(int argc, char *argv[])
 		if (bytesW == -1)
 			cant_write(ft);
 	}
+	close_fd(FD1);
+	close_fd(FD2);
 	return (0);
 }
