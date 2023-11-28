@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 		if (bytesR == -1)
 			cant_read(ff);
 	}
-	if (ft == NULL)
+	if (ft == NULL || access(ft, W_OK) == -1)
 		cant_write(ft);
 	if (access(ft, F_OK) == -1)
 	{
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 	else
 	{
 		FD2 = open(ft, O_WRONLY | O_TRUNC);
-		if (FD2 == -1 || access(ft, W_OK) == -1)
+		if (FD2 == -1)
 			cant_write(ft);
 		bytesW = write(FD2, buffer, bytesR);
 		if (bytesW == -1)
