@@ -22,19 +22,15 @@ void close_fd(int fd)
 	close(fd);
 }
 
-void cant_read(int fd1, int fd2, char *file)
+void cant_read(char *file)
 {
 	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
-	close_fd(fd1);
-	close_fd(fd2);
 	exit(98);
 }
 	
-void cant_write(int fd1, int fd2, char *file)
+void cant_write(char *file)
 {
 	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file);
-	close_fd(fd1);
-	close_fd(fd2);
 	exit(99);
 }
 
@@ -52,9 +48,9 @@ void cant_write(int fd1, int fd2, char *file)
 
 int main(int argc, char *argv[])
 {
-	int fileDescriptor1, fileDescriptor2;
-	int bytesRead = 0, bytesW = 0;
-	char *ff, *ft, buffer[1024];
+	int FD1, FD2;
+	ssize_t bytesR, bytesW;
+	char *ff, *ft, *buffer;
 	mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	if (argc != 3)
@@ -64,22 +60,42 @@ int main(int argc, char *argv[])
 	}
 	ff = argv[1];
 	ft = argv[2];
-	fileDescriptor1 = open(ff, O_RDONLY);
-	fileDescriptor2 = open(ft, O_CREAT | O_WRONLY | O_TRUNC, perms);
-	if (fileDescriptor1 == -1 || access(ff, R_OK) == -1 || ff == NULL)
-		cant_read(fileDescriptor1, fileDescriptor2, ff);
-	if (fileDescriptor2 == -1 || access(ft, W_OK) == -1 || ft == NULL)
-		cant_write(fileDescriptor1, fileDescriptor2, ft);
-	while ((bytesRead = read(fileDescriptor1, buffer, sizeof(buffer))) > 0)
+	if (access(ff, F_OK) == -1 || ff == NULL)
+		cant_read(ff);
+	else
 	{
-		if (bytesRead == -1)
-			cant_read(fileDescriptor1, fileDescriptor2, ff);
-		bytesW = write(fileDescriptor2, buffer, bytesRead);
-		if (bytesW == -1)
-			cant_write(fileDescriptor1, fileDescriptor2, ft);
-		/**chars -= bytesRead;*/
+		struct stat fileStat;
+		FD1 = open(ff, O_RDONLY);
+		if (FD1 == -1)
+			cant_read(ff);
+		if (fstat(FD1, &fileStat) == -1)
+			cant_read(ff);
+		buffer = (char *) malloc(fileStat.st_size);
+		if (buffer == NULL)
+			cant_read(ff);
+		bytesR = read(FD1, buffer, fileStat.st_size);
+		if (bytesR == -1)
+			cant_read(ff);
 	}
-	close_fd(fileDescriptor1);
-	close_fd(fileDescriptor2);
+	if (ft == NULL)
+		cant_write(ft);
+	if (access(ft, F_OK) == -1)
+	{
+		FD2 = open(ft, O_CREAT | O_WRONLY, perms);
+		if (FD2 == -1)
+			cant_write(ft);
+		bytesW = write(FD2, buffer, bytesR);
+		if (bytesW == -1)
+			cant_write(ft);
+	}
+	else
+	{
+		FD2 = open(ft, O_WRONLY | O_TRUNC);
+		if (FD2 == -1)
+			cant_write(ft);
+		bytesW = write(FD2, buffer, bytesR);
+		if (bytesW == -1)
+			cant_write(ft);
+	}
 	return (0);
 }
