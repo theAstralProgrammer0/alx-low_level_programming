@@ -23,14 +23,13 @@ int create_file(const char *filename, char *text_content)
 {
 	ssize_t bytesWritten = 0;
 	int fileDescriptor;
-
+	mode_t perms = S_IRUSR | S_IWUSR;
+	
 	if (filename == NULL)
 		return (-1);
 	if (access(filename, F_OK) == -1) /**file does not exist*/
 	{
-		fileDescriptor =
-			open(filename, O_CREAT | O_WRONLY | 0400 |
-					0200 | O_TRUNC);
+		fileDescriptor = open(filename, O_CREAT | O_WRONLY, perms);
 		if (fileDescriptor == -1)
 			return (-1);
 	}
