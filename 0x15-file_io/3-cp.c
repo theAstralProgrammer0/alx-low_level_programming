@@ -22,17 +22,19 @@ void close_fd(int fd)
 	close(fd);
 }
 
-void cant_read(int fd, char *file)
+void cant_read(int fd1, int fd2 char *file)
 {
 	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
-	close_fd(fd);
+	close_fd(fd1);
+	close_fd(fd2);
 	exit(98);
 }
 	
-void cant_write(int fd, char *file)
+void cant_write(int fd1, int fd2 char *file)
 {
 	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file);
-	close_fd(fd);
+	close_fd(fd1);
+	close_fd(fd2);
 	exit(99);
 }
 
@@ -71,10 +73,10 @@ int main(int argc, char *argv[])
 	while ((bytesRead = read(fileDescriptor1, buffer, sizeof(buffer))) > 0)
 	{
 		if (bytesRead == -1)
-			cant_read(fileDescriptor1, ff);
+			cant_read(fileDescriptor1, fileDescriptor2, ff);
 		bytesW = write(fileDescriptor2, buffer, bytesRead);
 		if (bytesW == -1)
-			cant_write(fileDescriptor2, ft);
+			cant_write(fileDescriptor1, fileDescriptor2, ft);
 		/**chars -= bytesRead;*/
 	}
 	close_fd(fileDescriptor1);
