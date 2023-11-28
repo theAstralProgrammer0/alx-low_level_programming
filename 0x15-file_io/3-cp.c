@@ -48,15 +48,15 @@ int main(int argc, char *argv[])
 	ff = argv[1];
 	ft = argv[2];
 	fileDescriptor1 = open(ff, O_RDONLY);
-	if (fileDescriptor1 == -1 || ff == NULL)
+	if (fileDescriptor1 == -1 || ft == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", ff);
 		exit(98);
 	}
 	fileDescriptor2 = open(ft, O_CREAT | O_WRONLY | O_TRUNC, perms);
-	if (fileDescriptor2 == -1 || ft == NULL)
+	if (fileDescriptor2 == -1 || ff == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write from file %s\n", ft);
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", ft);
 		exit(99);
 	}
 	while ((bytesRead = read(fileDescriptor1, buffer, sizeof(buffer))) > 0)
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", ft);
 			close_fd(fileDescriptor1);
 			close_fd(fileDescriptor2);
-			exit(98);
+			exit(99);
 		}
 	}
 	close_fd(fileDescriptor1);
