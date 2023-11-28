@@ -48,13 +48,13 @@ int main(int argc, char *argv[])
 	ff = argv[1];
 	ft = argv[2];
 	fileDescriptor1 = open(ff, O_RDONLY);
-	if (fileDescriptor1 == -1 || ff == NULL)
+	if (fileDescriptor1 == -1 || access(ff, R_OK) == -1 || ff == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", ff);
 		exit(98);
 	}
 	fileDescriptor2 = open(ft, O_CREAT | O_WRONLY | O_TRUNC, perms);
-	if (fileDescriptor2 == -1 || ft == NULL)
+	if (fileDescriptor2 == -1 || access(ft, W_OK) == -1 || ft == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", ft);
 		exit(99);
