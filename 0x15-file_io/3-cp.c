@@ -47,7 +47,6 @@ int main(int argc, char *argv[])
 	}
 	ff = argv[1];
 	ft = argv[2];
-
 	if (access(ff, F_OK) == -1 || access(ff, R_OK) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", ff);
