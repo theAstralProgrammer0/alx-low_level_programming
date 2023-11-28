@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 	else
 	{
 		FD2 = open(ft, O_WRONLY | O_TRUNC);
-		if (FD2 == -1)
+		if (FD2 == -1 || access(ft, W_OK) == -1)
 			cant_write(ft);
 		bytesW = write(FD2, buffer, bytesR);
 		if (bytesW == -1)
