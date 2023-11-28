@@ -101,5 +101,5 @@ int main(int argc, char *argv[])
 	}
 	close_fd(FD1);
 	close_fd(FD2);
-	return (0);
+	return (bytesR);
 }
