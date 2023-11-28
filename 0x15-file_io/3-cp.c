@@ -22,6 +22,20 @@ void close_fd(int fd)
 	close(fd);
 }
 
+void cant_read(int fd, char *file)
+{
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+	close_fd(fd);
+	exit(98);
+}
+	
+void cant_write(int fd, char *file)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file);
+	close_fd(fd);
+	exit(99);
+}
+
 /**
   * main - Entry Point
   *
@@ -36,7 +50,7 @@ void close_fd(int fd)
 
 int main(int argc, char *argv[])
 {
-	int fileDescriptor1, fileDescriptor2;
+	int fileDescriptor1, fileDescriptor2, chars;
 	int bytesRead = 0, bytesW = 0;
 	char *ff, *ft, buffer[1024];
 	mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
@@ -50,26 +64,19 @@ int main(int argc, char *argv[])
 	ft = argv[2];
 	fileDescriptor1 = open(ff, O_RDONLY);
 	if (fileDescriptor1 == -1 || access(ff, R_OK) == -1 || ff == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", ff);
-		exit(98);
-	}
+		cant_read(fileDescriptor1, ff);
 	fileDescriptor2 = open(ft, O_CREAT | O_WRONLY | O_TRUNC, perms);
 	if (fileDescriptor2 == -1 || access(ft, W_OK) == -1 || ft == NULL)
+		cant_write(fileDescriptor2, ft);
+	while (chars > 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", ft);
-		exit(99);
-	}
-	while ((bytesRead = read(fileDescriptor1, buffer, sizeof(buffer))) > 0)
-	{
-		bytesW= write(fileDescriptor2, buffer, bytesRead);
+		bytesRead = read(fileDescriptor1, buffer, sizeof(buffer));
+		if (bytesRead == -1)
+			cant_read(fileDescriptor1, ff);
+		bytesW = write(fileDescriptor2, buffer, bytesRead);
 		if (bytesW == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", ft);
-			close_fd(fileDescriptor1);
-			close_fd(fileDescriptor2);
-			exit(99);
-		}
+			cant_write(fileDescriptor2, ft);
+		chars -= bytesRead;
 	}
 	close_fd(fileDescriptor1);
 	close_fd(fileDescriptor2);
