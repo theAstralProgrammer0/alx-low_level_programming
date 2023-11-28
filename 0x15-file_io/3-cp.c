@@ -68,9 +68,8 @@ int main(int argc, char *argv[])
 	fileDescriptor2 = open(ft, O_CREAT | O_WRONLY | O_TRUNC, perms);
 	if (fileDescriptor2 == -1 || access(ft, W_OK) == -1 || ft == NULL)
 		cant_write(fileDescriptor2, ft);
-	while (bytesRead > 0)
+	while ((bytesRead = read(fileDescriptor1, buffer, sizeof(buffer))) > 0)
 	{
-		bytesRead = read(fileDescriptor1, buffer, sizeof(buffer));
 		if (bytesRead == -1)
 			cant_read(fileDescriptor1, ff);
 		bytesW = write(fileDescriptor2, buffer, bytesRead);
