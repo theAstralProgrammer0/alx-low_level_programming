@@ -83,33 +83,28 @@ int main(int argc, char *argv[])
 {
 	int FD1, FD2, bytesR, bytesW;
 	char *ff, *ft, *buffer;
+	struct stat fileStat;
 	mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	argc_check(argc);
 	ff = argv[1];
 	ft = argv[2];
-	if (ff == NULL)
+	FD1 = open(ff, O_RDONLY);
+	if (FD1 == -1)
 		cant_read(ff);
-	else
+	fstat(FD1, &fileStat);
+	buffer = (char *) malloc(fileStat.st_size);
+	if (buffer == NULL)
 	{
-		struct stat fileStat;
-		FD1 = open(ff, O_RDONLY);
-		if (FD1 == -1)
-			cant_read(ff);
-		fstat(FD1, &fileStat);
-		buffer = (char *) malloc(fileStat.st_size);
-		if (buffer == NULL)
-		{
-			close_fd(FD1);
-			cant_read(ff);
-		}
-		bytesR = read(FD1, buffer, fileStat.st_size);
-		if (bytesR == -1)
-		{
-			close_fd(FD1);
-			free(buffer);
-			cant_read(ff);
-		}
+		close_fd(FD1);
+		cant_read(ff);
+	}
+	bytesR = read(FD1, buffer, fileStat.st_size);
+	if (bytesR == -1)
+	{
+		close_fd(FD1);
+		free(buffer);
+		cant_read(ff);
 	}
 	if (ft == NULL)
 		cant_write(ft);
