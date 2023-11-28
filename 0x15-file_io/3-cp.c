@@ -30,7 +30,7 @@ void cant_read(char *file)
 	
 void cant_write(char *file)
 {
-	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
 	exit(99);
 }
 
