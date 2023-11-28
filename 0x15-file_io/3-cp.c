@@ -6,6 +6,51 @@
 #include <fcntl.h>
 
 /**
+  * argc_check - Aux Function
+  * Description: This function checks if the argument count is correct and
+  * prints an error message if it is wrong
+  * @argc: Argument count
+  * Return: Nothing
+  */
+
+void argc_check(int argc)
+{
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
+}
+
+/**
+  * cant_read - Aux Function
+  * Description: This function prints an error message and exits if an error
+  * occurs while reading from a file
+  * @file: The file
+  * Return: Nothing
+  */
+
+void cant_read(char *file)
+{
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+	exit(98);
+}
+
+/**
+  * cant_write - Aux Function
+  * Description: This function prints an error message and exits if an error
+  * occurs while writing to a file
+  * @file: The file
+  * Return: Nothing
+  */
+
+void cant_write(char *file)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+	exit(99);
+}
+
+/**
   * close_fd - Aux Function
   * Description: CLoses a file descriptor
   * @fd: file descriptor
@@ -22,18 +67,6 @@ void close_fd(int fd)
 	close(fd);
 }
 
-void cant_read(char *file)
-{
-	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
-	exit(98);
-}
-	
-void cant_write(char *file)
-{
-	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
-	exit(99);
-}
-
 /**
   * main - Entry Point
   *
@@ -48,16 +81,11 @@ void cant_write(char *file)
 
 int main(int argc, char *argv[])
 {
-	int FD1, FD2;
-	ssize_t bytesR, bytesW;
+	int FD1, FD2, bytesR, bytesW;
 	char *ff, *ft, *buffer;
 	mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
+	argc_check(argc);
 	ff = argv[1];
 	ft = argv[2];
 	if (access(ff, F_OK) == -1 || ff == NULL)
@@ -68,11 +96,8 @@ int main(int argc, char *argv[])
 		FD1 = open(ff, O_RDONLY);
 		if (FD1 == -1)
 			cant_read(ff);
-		if (fstat(FD1, &fileStat) == -1)
-			exit(98);
+		fstat(FD1, &fileStat);
 		buffer = (char *) malloc(fileStat.st_size);
-		if (buffer == NULL)
-			cant_read(ff);
 		bytesR = read(FD1, buffer, fileStat.st_size);
 		if (bytesR == -1)
 			cant_read(ff);
