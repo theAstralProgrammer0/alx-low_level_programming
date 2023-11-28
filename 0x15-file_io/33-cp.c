@@ -35,8 +35,8 @@ void close_fd(int fd)
 
 int main(int argc, char *argv[])
 {
-	int fileDescriptor1, fileDescriptor2;
-	int bytesRead = 0, bytesW = 0;
+	int fileDescriptor1, fileDescriptor2, len_ff, totalBytesRead = 0;
+	int bytesRead = 0, bytesWritten = 0;
 	char *ff, *ft, buffer[1024];
 	mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
@@ -53,23 +53,25 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", ff);
 		exit(98);
 	}
-	fileDescriptor2 = open(ft, O_CREAT | O_WRONLY | O_TRUNC, perms);
+
+	if (access(ft, F_OK) == 0)
+		fileDescriptor2 = open(ft, O_WRONLY | O_TRUNC);
+	fileDescriptor2 = open(ft, O_CREAT | O_WRONLY, perms);
 	if (fileDescriptor2 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write from file %s\n", ft);
 		exit(99);
 	}
-	while ((bytesRead = read(fileDescriptor1, buffer, sizeof(buffer))) > 0)
+	len_ff = strlen(ff);
+	while (len_ff)
 	{
-		bytesW= write(fileDescriptor2, buffer, bytesRead);
-		if (bytesW == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", ft);
-			close_fd(fileDescriptor1);
-			close_fd(fileDescriptor2);
-			exit(98);
-		}
+		bytesRead = read(fileDescriptor1, buffer, sizeof(buffer));
+		if (bytesRead == 0)
+			break;
+		totalBytesRead += bytesRead;
+		len_ff -= bytesRead;
 	}
+	bytesWritten += write(fileDescriptor2, buffer, totalBytesRead);
 	close_fd(fileDescriptor1);
 	close_fd(fileDescriptor2);
 	return (0);
