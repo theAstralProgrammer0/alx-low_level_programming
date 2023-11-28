@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 		if (FD1 == -1)
 			cant_read(ff);
 		if (fstat(FD1, &fileStat) == -1)
-			cant_read(ff);
+			exit(98);
 		buffer = (char *) malloc(fileStat.st_size);
 		if (buffer == NULL)
 			cant_read(ff);
@@ -101,5 +101,5 @@ int main(int argc, char *argv[])
 	}
 	close_fd(FD1);
 	close_fd(FD2);
-	return (bytesR);
+	return (0);
 }
