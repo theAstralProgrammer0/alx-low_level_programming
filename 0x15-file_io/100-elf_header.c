@@ -6,6 +6,15 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+void elf_check(elf_header->e_ident);
+void handle_magic(elf_header->e_ident);
+void handle_class(elf_header->e_ident);
+void handle_data(elf_header->e_ident);
+void handle_version(elf_header->e_ident);
+void handle_osabi(elf_header->e_ident);
+void handle_abi(elf_header->e_ident);
+void handle_type(elf_header->e_type, elf_header->e_ident);
+void handle_entryAddr(elf_header->e_entry, elf_header->e_ident);
 /**
   * elf_check - Aux Function
   * Description: checks if the file is an elf file
