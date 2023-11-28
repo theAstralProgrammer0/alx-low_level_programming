@@ -24,7 +24,7 @@ int create_file(const char *filename, char *text_content)
 	ssize_t bytesWritten = 0;
 	int fileDescriptor;
 	mode_t perms = S_IRUSR | S_IWUSR;
-	
+
 	if (filename == NULL)
 		return (-1);
 	if (access(filename, F_OK) == -1) /**file does not exist*/
