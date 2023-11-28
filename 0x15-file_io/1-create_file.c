@@ -8,7 +8,7 @@
 int create_file(const char *filename, char *text_content)
 {
 	ssize_t bytesWritten = 0;
-	int existCheck, fileDescriptor;
+	int fileDescriptor;
 
 	if (filename == NULL)
 		return (-1);
@@ -18,8 +18,12 @@ int create_file(const char *filename, char *text_content)
 		fileDescriptor = open(filename,O_CREAT|O_WRONLY|S_IRUSR|S_IWUSR);
 		if (fileDescriptor == -1) return (-1);
 		if (text_content == NULL)
+		{
 			bytesWritten += write(fileDescriptor, "", 1);
+			if (bytesWritten == -1) return (-1);
+		}
 		bytesWritten += write(fileDescriptor, text_content,strlen(text_content));
+		if (bytesWritten == -1) return (-1);
 		return (1);
 	}
 	else /**file exists*/
@@ -28,10 +32,12 @@ int create_file(const char *filename, char *text_content)
 			open(filename,O_WRONLY|O_TRUNC);
 		if (fileDescriptor == -1) return (-1);
 		if (text_content == NULL)
+		{
 			bytesWritten += write(fileDescriptor, "", 1);
+			if (bytesWritten == -1) return (-1);
 		bytesWritten += write(fileDescriptor, text_content,strlen(text_content));
+		if (bytesWritten == -1) return (-1);
 		return (1);
 	}
 	close(fileDescriptor);
-	close(existCheck);
 }
