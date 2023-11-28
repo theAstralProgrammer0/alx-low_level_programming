@@ -103,10 +103,10 @@ void handle_data(unsigned char *e_ident)
 	switch (e_ident[EI_DATA])
 	{
 		case ELFDATA2LSB:
-			printf("2's compliment, little endian\n");
+			printf("2's complement, little endian\n");
 			break;
 		case ELFDATA2MSB:
-			printf("2's compliment, big endian\n");
+			printf("2's complement, big endian\n");
 			break;
 		case ELFDATANONE:
 			printf("none\n");
@@ -131,7 +131,7 @@ void handle_version(unsigned char *e_ident)
 	switch (e_ident[EI_VERSION])
 	{
 		case EV_CURRENT:
-			printf(" (Current)\n");
+			printf(" (current)\n");
 			break;
 		default:
 			printf("\n");
