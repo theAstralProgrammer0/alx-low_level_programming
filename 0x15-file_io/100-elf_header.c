@@ -6,7 +6,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-//checks if the file is an elf file
+/**
+  * elf_check - Aux Function
+  * Description: checks if the file is an elf file
+  * @e_ident: A pointer to an array containing the ELF magic numbers
+  */
+
 void elf_check(unsigned char *e_ident)
 {
 	int i;
@@ -24,7 +29,13 @@ void elf_check(unsigned char *e_ident)
 	}
 }
 
-//prints the magic numbers of the ELF header file separating them with a space
+/**
+  * handle_magic - Aux Function
+  * Description: prints the magic numbers of the ELF header file separating
+  * them with a space
+  * @e_ident: A pointer to an array containing the ELF magic numbers
+  */
+
 void handle_magic(unsigned char *e_ident)
 {
 	int i;
@@ -40,14 +51,18 @@ void handle_magic(unsigned char *e_ident)
 	}
 }
 
+/**
+  * handle_class - Aux Function
+  * Description: prints the class of the ELF header file indicating whether its
+  * ELF32 or ELF64 or none
+  * @e_ident: A pointer to an array containing the ELF class
+  */
 
-	//prints the class of the ELF header file indicating whether its ELF32 or ELF64
-	//or none
 void handle_class(unsigned char *e_ident)
 {
 	printf("  Class:                             ");
 
-	switch(e_ident[EI_CLASS])
+	switch (e_ident[EI_CLASS])
 	{
 		case ELFCLASS32:
 			printf("ELF32\n");
@@ -65,14 +80,18 @@ void handle_class(unsigned char *e_ident)
 }
 
 
+/**
+  * handle_data - Aux Function
+  * Description: prints the endiannes (data representation) of the ELF header
+  * file indicating whether its in little-endian or big-endian
+  * @e_ident: A pointer to an array containing the ELF class
+  */
 
-	//prints the endiannes (data representation) of the ELF header file
-	//indicating whether its in little-endian or big-endian
 void handle_data(unsigned char *e_ident)
 {
 	printf("  Data:                              ");
 
-	switch(e_ident[EI_DATA])
+	switch (e_ident[EI_DATA])
 	{
 		case ELFDATA2LSB:
 			printf("2's compliment, little endian\n");
@@ -88,15 +107,19 @@ void handle_data(unsigned char *e_ident)
 			break;
 	}
 }
-	
 
-	//prints the version of the ELF header file and if it is the same as the current
-	//file
+/**
+  * handle_version - Aux Function
+  * Description: prints the version of the ELF header file and if it is the
+  * same as the current file
+  * @e_ident: A pointer to an array containing the ELF version
+  */
+
 void handle_version(unsigned char *e_ident)
 {
 	printf("  Version:                           %d", e_ident[EI_VERSION]);
 
-	switch(e_ident[EI_VERSION])
+	switch (e_ident[EI_VERSION])
 	{
 		case EV_CURRENT:
 			printf(" (Current)\n");
@@ -106,6 +129,12 @@ void handle_version(unsigned char *e_ident)
 			break;
 	}
 }
+
+/**
+ * print_osabi - Prints the OS/ABI of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF version.
+ */
+
 void handle_osabi(unsigned char *e_ident)
 {
 	printf("  OS/ABI:                            ");
@@ -147,11 +176,24 @@ void handle_osabi(unsigned char *e_ident)
 			break;
 	}
 }
+
+/**
+ * print_abi - Prints the ABI version of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF ABI version.
+ */
+
 void handle_abi(unsigned char *e_ident)
 {
 	printf("  ABI Version:                       %d\n",
 			e_ident[EI_ABIVERSION]);
 }
+
+/**
+ * print_type - Prints the type of an ELF header.
+ * @e_type: The ELF type.
+ * @e_ident: A pointer to an array containing the ELF class.
+ */
+
 void handle_type(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
@@ -180,6 +222,12 @@ void handle_type(unsigned int e_type, unsigned char *e_ident)
 	}
 }
 
+/**
+ * print_entry - Prints the entry point of an ELF header.
+ * @e_entry: The address of the ELF entry point.
+ * @e_ident: A pointer to an array containing the ELF class.
+ */
+
 void handle_entryAddr(unsigned long int e_entry, unsigned char *e_ident)
 {
 	printf("  Entry point address:               ");
@@ -195,6 +243,13 @@ void handle_entryAddr(unsigned long int e_entry, unsigned char *e_ident)
 		printf("%#lx\n", e_entry);
 }
 
+/**
+ * close_elf - Closes an ELF file.
+ * @fd: The file descriptor of the ELF file.
+ *
+ * Description: If the file cannot be closed - exit code 98.
+ */
+
 void close_fd(int fd)
 {
 	if (close(fd) == -1)
@@ -203,6 +258,18 @@ void close_fd(int fd)
 		exit(98);
 	}
 }
+
+/**
+ * main - Displays the information contained in the
+ *        ELF header at the start of an ELF file.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
+ *
+ * Return: 0 on success.
+ *
+ * Description: If the file is not an ELF File or
+ *              the function fails - exit code 98.
+ */
 
 int main(int __attribute__((__unused__))argc, char *argv[])
 {
