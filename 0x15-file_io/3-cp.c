@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 	argc_check(argc);
 	ff = argv[1];
 	ft = argv[2];
-	if (access(ff, F_OK) == -1 || ff == NULL)
+	if (ff == NULL)
 		cant_read(ff);
 	else
 	{
@@ -98,32 +98,27 @@ int main(int argc, char *argv[])
 			cant_read(ff);
 		fstat(FD1, &fileStat);
 		buffer = (char *) malloc(fileStat.st_size);
+		if (buffer == NULL)
+		{
+			close_fd(FD1);
+			cant_read(ff);
+		}
 		bytesR = read(FD1, buffer, fileStat.st_size);
 		if (bytesR == -1)
+		{
+			close_fd(FD1);
+			free(buffer);
 			cant_read(ff);
+		}
 	}
 	if (ft == NULL)
 		cant_write(ft);
-	if (access(ft, F_OK) == -1)
-	{
-		FD2 = open(ft, O_CREAT | O_WRONLY, perms);
-		if (FD2 == -1)
-			cant_write(ft);
-		bytesW = write(FD2, buffer, bytesR);
-		if (bytesW == -1)
-			cant_write(ft);
-	}
-	else
-	{
-		if (access(ft, W_OK) == -1)
-			cant_write(ft);
-		FD2 = open(ft, O_WRONLY | O_TRUNC);
-		if (FD2 == -1)
-			cant_write(ft);
-		bytesW = write(FD2, buffer, bytesR);
-		if (bytesW == -1)
-			cant_write(ft);
-	}
+	FD2 = open(ft, O_CREAT | O_WRONLY | O_TRUNC, perms);
+	if (FD2 == -1)
+		cant_write(ft);
+	bytesW = write(FD2, buffer, bytesR);
+	if (bytesW == -1)
+		cant_write(ft);
 	free(buffer);
 	close_fd(FD1);
 	close_fd(FD2);
