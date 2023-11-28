@@ -50,7 +50,7 @@ void cant_write(int fd, char *file)
 
 int main(int argc, char *argv[])
 {
-	int fileDescriptor1, fileDescriptor2, chars;
+	int fileDescriptor1, fileDescriptor2;
 	int bytesRead = 0, bytesW = 0;
 	char *ff, *ft, buffer[1024];
 	mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	fileDescriptor2 = open(ft, O_CREAT | O_WRONLY | O_TRUNC, perms);
 	if (fileDescriptor2 == -1 || access(ft, W_OK) == -1 || ft == NULL)
 		cant_write(fileDescriptor2, ft);
-	while (chars > 0)
+	while (bytesRead > 0)
 	{
 		bytesRead = read(fileDescriptor1, buffer, sizeof(buffer));
 		if (bytesRead == -1)
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 		bytesW = write(fileDescriptor2, buffer, bytesRead);
 		if (bytesW == -1)
 			cant_write(fileDescriptor2, ft);
-		chars -= bytesRead;
+		/**chars -= bytesRead;*/
 	}
 	close_fd(fileDescriptor1);
 	close_fd(fileDescriptor2);
