@@ -33,6 +33,7 @@ dlist_t *init_list();
 size_t print_dlistint(const dlistint_t *head);
 /* This function returns the length of a doubly linked list */
 size_t dlistint_len(const dlistint_t *head);
+/* Adds node to beginning of list */
 dlistint_t *add_dnodeint(dlistint_t **head, const int n);
 /* This function adds a node at the beginning of a doubly linked list */
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
