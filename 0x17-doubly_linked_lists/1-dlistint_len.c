@@ -2,9 +2,10 @@
 #include "lists.h"
 
 /**
-  * dlist_len - Entry Point
+  * dlistint_len - Entry Point
   *
-  * Description: This function finds the number of nodes in a linked list
+  * Description: This function finds the number of nodes in a doubly
+  * linked list
   *
   * @h: head that points to the head node of linked list
   *
