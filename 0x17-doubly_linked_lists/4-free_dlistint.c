@@ -5,11 +5,9 @@
  *
  * Description: This function frees a doubly linked list
  *
- * @head: double pointer to head node
+ * @head: pointer to head node
  *
- * @n: integer member of node to be added
- *
- * Return: (dlistint_t *) pointer to newnode, (NULL) on failure
+ * Return: Nothing
  */
 
 void free_dlistint(dlistint_t *head)
