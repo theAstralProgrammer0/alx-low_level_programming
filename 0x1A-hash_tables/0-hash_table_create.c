@@ -2,7 +2,7 @@
 
 /**
  * hash_table_create - Entry Point
- * 
+ *
  * Description: This function initializes a hash table
  *
  * @size: Size of the hash table

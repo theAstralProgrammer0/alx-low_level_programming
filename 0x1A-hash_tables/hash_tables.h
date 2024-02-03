@@ -16,9 +16,9 @@
  */
 typedef struct hash_node_s
 {
-     char *key;
-     char *value;
-     struct hash_node_s *next;
+	char *key;
+	char *value;
+	struct hash_node_s *next;
 } hash_node_t;
 
 /**
@@ -31,8 +31,8 @@ typedef struct hash_node_s
  */
 typedef struct hash_table_s
 {
-     unsigned long int size;
-     hash_node_t **array;
+	unsigned long int size;
+	hash_node_t **array;
 } hash_table_t;
 
 
@@ -47,6 +47,7 @@ void hash_table_delete(hash_table_t *ht);
 
 hash_node_t *create_item(const char *key, const char *value);
 void free_hi(hash_node_t *h_item);
+void free_ht_ll(hash_node_t *head);
 void free_ht(hash_table_t *h_table);
 int handle_collision(hash_table_t *ht, hash_node_t *hi, unsigned long int id);
 void print_ht_list(hash_node_t *h_item);

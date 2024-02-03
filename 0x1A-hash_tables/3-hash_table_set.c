@@ -13,7 +13,7 @@
  */
 hash_node_t *create_item(const char *key, const char *value)
 {
-	hash_node_t * h_item = NULL;
+	hash_node_t *h_item = NULL;
 
 	h_item = (hash_node_t *) malloc(sizeof(hash_node_t));
 	if (h_item == NULL)
@@ -68,6 +68,7 @@ void free_ht(hash_table_t *h_table)
 {
 	unsigned long int i;
 	hash_node_t **h_items = NULL;
+	hash_node_t *current = NULL, *nextnode = NULL;
 
 	if (h_table == NULL)
 		return;
@@ -75,10 +76,28 @@ void free_ht(hash_table_t *h_table)
 	h_items = h_table->array;
 	for (i = 0; i < h_table->size; i++)
 	{
-		if (h_items[i])
+
+		if (!h_items[i])
+			continue;
+		/*single item in index*/
+		if (h_items[i]->next == NULL)
 		{
-			free_hi(h_items[i]);
-			h_items[i] = NULL;
+			if (h_items[i])
+			{
+				free_hi(h_items[i]);
+				h_items[i] = NULL;
+			}
+		}
+		/*linked list in index*/
+		else
+		{
+			current = h_items[i];
+			while (current)
+			{
+				nextnode = current->next;
+				free_hi(current);
+				current = nextnode;
+			}
 		}
 	}
 	free(h_items);
@@ -133,7 +152,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		free_ht(ht);
 		return (0);
 	}
-	
+
+	if (*key == '\0')
+	{
+		free_ht(ht);
+		return (0);
+	}
+
 	index = key_index((const unsigned char *)key, ht->size);
 	h_items = ht->array;
 

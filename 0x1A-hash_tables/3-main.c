@@ -30,5 +30,6 @@ int main(void)
     hash_table_set(ht, "vivency", "vivency value");
 
     print_ht(ht);
+    free_ht(ht);
     return (EXIT_SUCCESS);
 }

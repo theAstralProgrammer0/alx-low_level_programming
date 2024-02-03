@@ -54,7 +54,6 @@ void print_ht(hash_table_t *h_table)
 		}
 		else
 		{
-			printf("I'm in the else block\n");
 			print_ht_list(h_items[i]);
 		}
 	}
