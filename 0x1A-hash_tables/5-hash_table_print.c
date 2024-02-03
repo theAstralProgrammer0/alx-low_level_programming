@@ -51,13 +51,13 @@ void hash_table_print(const hash_table_t *ht)
 			if (count == 0)
 			{
 				printf("'%s': '%s'",
-					h_items[i]->key, i, h_items[i]->value);
+					h_items[i]->key, h_items[i]->value);
 				++count;
 			}
 			else
 			{
 				printf(", '%s': '%s'",
-					h_items[i]->key, i, h_items[i]->value);
+					h_items[i]->key, h_items[i]->value);
 				++count;
 			}
 		}
