@@ -26,7 +26,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	if (h_items[index] == NULL)
 		return (NULL);
-	
+
 	/*single element at index*/
 	if (h_items[index]->next == NULL)
 		return (h_items[index]->value);
