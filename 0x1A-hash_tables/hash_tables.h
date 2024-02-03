@@ -50,7 +50,6 @@ void free_hi(hash_node_t *h_item);
 void free_ht_ll(hash_node_t *head);
 void free_ht(hash_table_t *h_table);
 int handle_collision(hash_table_t *ht, hash_node_t *hi, unsigned long int id);
-void print_ht_list(hash_node_t *h_item);
-void print_ht(hash_table_t *h_table);
-
+void hash_table_ll_print(hash_node_t *h_item);
+void hash_table_print(const hash_table_t *ht);
 #endif
