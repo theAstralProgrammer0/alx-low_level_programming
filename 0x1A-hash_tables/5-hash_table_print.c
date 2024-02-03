@@ -16,17 +16,7 @@ void hash_table_ll_print(hash_node_t *h_item)
 	temp = h_item;
 	while (temp)
 	{
-		/*
-		*if (count == 0)
-		*{
-		*	printf("'%s': '%s'",
-		*		temp->key, temp->value);
-		*	++count;
-		*}
-		*else
-		*{*/
 		printf(", '%s': '%s'", temp->key, temp->value);
-		/*++count;*/
 		temp = temp->next;
 	}
 }
@@ -60,13 +50,13 @@ void hash_table_print(const hash_table_t *ht)
 		{
 			if (count == 0)
 			{
-				printf("'%s[%lu]': '%s'",
+				printf("'%s': '%s'",
 					h_items[i]->key, i, h_items[i]->value);
 				++count;
 			}
 			else
 			{
-				printf(", '%s[%lu]': '%s'",
+				printf(", '%s': '%s'",
 					h_items[i]->key, i, h_items[i]->value);
 				++count;
 			}
