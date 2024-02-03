@@ -37,6 +37,9 @@ void hash_table_print(const hash_table_t *ht)
 	unsigned long int i;
 	hash_node_t **h_items = NULL;
 
+	if (ht == NULL)
+		return;
+
 	h_items = ht->array;
 
 	printf("{");
