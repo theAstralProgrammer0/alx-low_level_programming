@@ -72,11 +72,9 @@ void free_ht(hash_table_t *h_table)
 
 	if (h_table == NULL)
 		return;
-
 	h_items = h_table->array;
 	for (i = 0; i < h_table->size; i++)
 	{
-
 		if (!h_items[i])
 			continue;
 		/*single item in index*/
@@ -146,19 +144,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *h_item = NULL, **h_items = NULL;
 	unsigned long int index;
 
-	if (ht == NULL)
+	if (ht == NULL || strlen(key) == 0)
 		return (0);
 
 	h_item = create_item(key, value);
 	if (h_item == NULL)
 	{
 		free_ht(ht);
-		return (0);
-	}
-
-	if (strlen(key) == 0)
-	{
-		free_hi(h_item);
 		return (0);
 	}
 
