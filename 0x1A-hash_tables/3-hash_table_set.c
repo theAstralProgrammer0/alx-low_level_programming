@@ -52,6 +52,7 @@ void free_hi(hash_node_t *h_item)
 		h_item->value = NULL;
 	}
 	free(h_item);
+	h_item = NULL;
 }
 
 
@@ -94,6 +95,7 @@ void free_ht(hash_table_t *h_table)
 			{
 				nextnode = current->next;
 				free_hi(current);
+				current = NULL;
 				current = nextnode;
 			}
 		}
