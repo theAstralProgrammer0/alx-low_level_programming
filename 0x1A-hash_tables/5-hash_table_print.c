@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
- * print_ht_list - Aux function
+ * hash_table_ll_print - Aux function
  *
  * Description: This function prints the linked list at an index
  *
@@ -23,11 +23,11 @@ void hash_table_ll_print(hash_node_t *h_item)
 
 
 /**
- * print_ht - Entry Point
+ * hash_table_print - Entry Point
  *
  * Description: This function prints the contents of a hash table
  *
- * @h_table: pointer to the hash table
+ * @ht: pointer to the hash table
  *
  * Return: Nothing
  */
