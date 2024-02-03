@@ -146,6 +146,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *h_item = NULL, **h_items = NULL;
 	unsigned long int index;
 
+	if (ht == NULL)
+		return (0);
+
 	h_item = create_item(key, value);
 	if (h_item == NULL)
 	{
