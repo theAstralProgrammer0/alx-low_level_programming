@@ -153,9 +153,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 
-	if (key == NULL)
+	if (strlen(key) == 0)
 	{
-		free_ht(ht);
+		free_hi(h_item);
 		return (0);
 	}
 
