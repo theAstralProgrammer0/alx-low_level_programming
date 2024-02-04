@@ -167,12 +167,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		/*compare key values and update if same*/
+		/*compare key values and replace if same*/
 		if (strcmp(h_items[index]->key, key) == 0)
 		{
-			if (h_items[index]->value)
-				free(h_items[index]->value);
-			h_items[index]->value = strdup(value);
+			free_hi(h_items[index]);
+			h_items[index] = h_item;
 			return (1);
 		}
 		/*otherwise handle collision*/

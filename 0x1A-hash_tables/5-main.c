@@ -37,5 +37,6 @@ int main(void)
     hash_table_set(ht, "dram", "dram value");
     hash_table_set(ht, "vivency", "vivency value");
     hash_table_print(ht);
+    free_ht(ht);
     return (EXIT_SUCCESS);
 }

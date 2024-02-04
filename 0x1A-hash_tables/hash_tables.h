@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <strings.h>
 
 /**
  * struct hash_node_s - Node of a hash table
@@ -35,7 +35,7 @@ typedef struct hash_table_s
 	hash_node_t **array;
 } hash_table_t;
 
-
+/* Core Functions */
 hash_table_t *hash_table_create(unsigned long int size);
 unsigned long int hash_djb2(const unsigned char *str);
 unsigned long int key_index(const unsigned char *key, unsigned long int size);
@@ -44,12 +44,11 @@ char *hash_table_get(const hash_table_t *ht, const char *key);
 void hash_table_print(const hash_table_t *ht);
 void hash_table_delete(hash_table_t *ht);
 
-
+/* Auxilliary Functions */
 hash_node_t *create_item(const char *key, const char *value);
 void free_hi(hash_node_t *h_item);
 void free_ht_ll(hash_node_t *head);
 void free_ht(hash_table_t *h_table);
 int handle_collision(hash_table_t *ht, hash_node_t *hi, unsigned long int id);
 void hash_table_ll_print(hash_node_t *h_item);
-void hash_table_print(const hash_table_t *ht);
 #endif
