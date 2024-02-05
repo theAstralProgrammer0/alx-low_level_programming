@@ -377,3 +377,47 @@ void shash_table_delete(shash_table_t *ht)
 {
         free_sht(ht);
 }
+
+/**
+ * hash_table_get - Entry Point
+ *
+ * Description: This is a function that uses a key to retrieve the
+ * corresponding value in the hash table
+ *
+ * @ht: hash table to be probed
+ *
+ * @key: key to retrieve value
+ *
+ * Return: (char *) value string
+ */
+
+char *shash_table_get(const shash_table_t *ht, const char *key)
+{
+	unsigned long int index;
+	shash_node_t **sh_items = NULL, *temp = NULL;
+
+	if (ht == NULL || key == NULL)
+		return (NULL);
+
+	index = key_index((const unsigned char *)key, ht->size);
+	sh_items = ht->array;
+
+	if (sh_items[index] == NULL)
+		return (NULL);
+
+	/*single element at index*/
+	if (sh_items[index]->next == NULL)
+		return (sh_items[index]->value);
+	/*linked list at index*/
+	else
+	{
+		temp = sh_items[index];
+		while (temp)
+		{
+			if (strcmp(temp->key, key) == 0)
+				return (temp->value);
+			temp = temp->next;
+		}
+		return (NULL);
+	}
+}
