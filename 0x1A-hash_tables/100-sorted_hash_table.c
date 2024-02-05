@@ -103,7 +103,7 @@ void free_sht(shash_table_t *sh_table)
  *
  * Return: (shash_node_t *) a pinter to the item node on Success, NULL otherwise
  */
-shash_node_t *create_item(const char *key, const char *value)
+shash_node_t *create_item_sh(const char *key, const char *value)
 {
 	shash_node_t *sh_item = NULL;
 
@@ -171,7 +171,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	if (ht == NULL || strlen(key) == 0)
 		return (0);
 
-	sh_item = create_item(key, value);
+	sh_item = create_item_sh(key, value);
 	if (sh_item == NULL)
 	{
 		free_sht(ht);
@@ -194,7 +194,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		}
 		/*otherwise handle collision*/
 		else
-			handle_collision(ht, sh_item, index);
+			handle_cllsn(ht, sh_item, index);
 	}
 
 	/* insert new item in a sorted manner to hash table dll */
@@ -214,7 +214,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  *
  * Return: (int) 1 on Success, 0 on Failure
  */
-int handle_collision(shash_table_t *ht, shash_node_t *hi, unsigned long int id)
+int handle_cllsn(shash_table_t *ht, shash_node_t *hi, unsigned long int id)
 {
 	hi->next = ht->array[id];
 	ht->array[id] = hi;
