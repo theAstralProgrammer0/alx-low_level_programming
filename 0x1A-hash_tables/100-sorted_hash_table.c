@@ -252,22 +252,21 @@ int sorted_insert_to_sh(shash_table_t *ht, shash_node_t *sh_item)
 	else
 	{
 		temp = ht->shead;
-
-		if (strcmp(temp->key, sh_item->key) < 0)
-		{
-			sh_item->snext = temp;
-			temp->sprev = sh_item;
-			ht->shead = sh_item;
-			return (0);
-		}
-
 		
 		/* compare current key with dll key */
 		while (temp->snext)
 		{
-			if (strcmp(temp->key, sh_item->key) >= 0)
+			if (strcmp(sh_item->key, temp->key) > 0)
 				temp = temp->snext;
-			else
+			if (temp == ht->shead && strcmp(sh_item->key, temp->key) < 0)
+			{
+				sh_item->snext = temp;
+				temp->sprev = sh_item;
+				ht->shead = sh_item;
+				shash_table_print(ht);
+				return (1);
+			}
+			else if (strcmp(sh_item->key, temp->key) < 0)
 			{
 				sh_item->sprev = temp->sprev;
 				sh_item->snext = temp;
@@ -294,7 +293,7 @@ int sorted_insert_to_sh(shash_table_t *ht, shash_node_t *sh_item)
   * Return: (count) int
   */
 
-void shash_table_print(const shash_table_t *ht)
+void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *temp = NULL;
 	int count = 0;
@@ -335,7 +334,7 @@ void shash_table_print(const shash_table_t *ht)
   * Return: (count) int
   */
 
-void shash_table_print_rev(const shash_table_t *ht)
+void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *temp = NULL;
 	int count = 0;

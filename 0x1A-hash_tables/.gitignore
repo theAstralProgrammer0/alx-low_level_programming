@@ -8,3 +8,7 @@ f
 g
 sht
 sh*
+a*
+*.py
+__pycache__
+__pycache__/*
