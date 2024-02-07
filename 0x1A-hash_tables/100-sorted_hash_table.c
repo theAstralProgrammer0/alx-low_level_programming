@@ -399,6 +399,9 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 		return (NULL);
 
 	index = key_index((const unsigned char *)key, ht->size);
+	if (index > ht->size)
+		return (NULL);
+
 	sh_items = ht->array;
 
 	if (sh_items[index] == NULL)
@@ -419,4 +422,5 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 		}
 		return (NULL);
 	}
+	return (NULL);
 }
