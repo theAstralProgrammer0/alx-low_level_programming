@@ -14,8 +14,8 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) -c -o $@ $<
 
-clean: 
-	find . \( -name "*~" -o -name "*.swp" -o -name "*.swo" -o -name "*.swn" -o -name "*.bak" -o -name "*.exe" -o -executable \) -exec $(RM) {} +
+clean:
+	$(RM) $(NAME) *~ *.swp *.swo *.swn *.bak
 
 oclean:
 	$(RM) *.o
