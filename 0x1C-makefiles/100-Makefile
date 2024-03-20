@@ -1,26 +1,19 @@
-SHELL:=/bin/bash
-
 CC = gcc
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
+.PHONY : all clean oclean fclean re
 
-all: $(NAME)
+all : m.h $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) @echo "$(CFLAGS)" $(OBJ) -o $@
+clean :
+	$(RM) *~ $(NAME)
 
-clean:
-	@$(RM) $(NAME) *~ *.swp *.swo *.swn *.bak
+oclean :
+	$(RM) $(OBJ)
 
-oclean:
-	@$(RM) $(OBJ)
+fclean : clean oclean
 
-fclean: clean oclean
-
-re: fclean all
-
-.PHONY: all clean oclean fclean re
-
--include m.h
+re : oclean all
