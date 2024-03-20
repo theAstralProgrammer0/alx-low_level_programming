@@ -4,7 +4,7 @@ CC = gcc
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
-CFLAGS := -Wall -Werror -Wextra -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic
 
 all: $(NAME)
 
