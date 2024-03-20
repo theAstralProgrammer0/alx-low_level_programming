@@ -1,0 +1,29 @@
+SHELL:=/bin/bash
+
+CC=gcc
+SRC=main.c school.c
+OBJ=$(patsubst %.c,%.o,$(SRC))
+NAME=school
+RM=rm -f
+CFLAGS=-Wall -Werror -Wextra -pedantic
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+clean:
+	$(RM) $(NAME) *~ *.swp *.swo *.swn *.bak
+
+oclean:
+	$(RM) *.o
+
+fclean: clean oclean
+
+
+re: fclean all
+
+.PHONY: all clean oclean fclean re
