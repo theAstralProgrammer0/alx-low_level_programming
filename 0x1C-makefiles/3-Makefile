@@ -1,0 +1,28 @@
+SHELL:=/bin/bash
+
+CC=gcc
+SRC=main.c school.c
+OBJ=$(patsubst %.c,%.o,$(SRC))
+NAME=school
+RM=rm -f
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $@ $^
+
+%.o: %.c
+	$(CC) -c -o $@ $<
+
+clean: 
+	find . \( -name "*~" -o -name "*.swp" -o -name "*.swo" -o -name "*.swn" -o -name "*.bak" -o -name "*.exe" -o -executable \) -exec $(RM) {} +
+
+oclean:
+	$(RM) *.o
+
+fclean: clean oclean
+
+
+re: fclean all
+
+.PHONY: all clean oclean fclean re
