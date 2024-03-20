@@ -9,7 +9,7 @@ CFLAGS := -Wall -Werror -Wextra -pedantic
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $@
+	$(CC) @echo "$(CFLAGS)" $(OBJ) -o $@
 
 clean:
 	@$(RM) $(NAME) *~ *.swp *.swo *.swn *.bak
