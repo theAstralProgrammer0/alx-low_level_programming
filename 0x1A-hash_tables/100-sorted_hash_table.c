@@ -63,7 +63,7 @@ void free_sht(shash_table_t *sh_table)
         {
                 if (!sh_items[i])
                         continue;
-                /*single item in index*/
+                /*single item in idx*/
                 if (sh_items[i]->next == NULL)
                 {
                         if (sh_items[i])
@@ -72,7 +72,7 @@ void free_sht(shash_table_t *sh_table)
                                 sh_items[i] = NULL;
                         }
                 }
-                /*linked list in index*/
+                /*linked list in idx*/
                 else
                 {
                         current = sh_items[i];
@@ -166,7 +166,8 @@ void free_shi(shash_node_t *sh_item)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *sh_item = NULL, **sh_items = NULL;
-	unsigned long int index;
+	shash_node_t *temp = NULL;
+	unsigned long int idx;
 
 	if (ht == NULL || strlen(key) == 0)
 		return (0);
@@ -178,25 +179,64 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 
-	index = key_index((const unsigned char *)key, ht->size);
+	idx = key_index((const unsigned char *)key, ht->size);
 	sh_items = ht->array;
 
-	/*check if the index location is free*/
-	if (sh_items[index] == NULL)
-		sh_items[index] = sh_item;
+	/*check if the idx location is free*/
+	if (sh_items[idx] == NULL)
+		sh_items[idx] = sh_item;
+	/* index is occupied */
 	else
 	{
-		/*compare key values and replace if same*/
-		if (strcmp(sh_items[index]->key, key) == 0)
+		/* one item present */
+		if (!(sh_items[idx]->next))
 		{
-			free_shi(sh_items[index]);
-			sh_items[index] = sh_item;
-		}
-		/*otherwise handle collision*/
-		else
-			handle_cllsn(ht, sh_item, index);
-	}
+			/* keys match */
+			if (!strcmp(sh_items[idx]->key, key))
+			{
+				printf("Before Replace:\n");
+				printf("sh_items[idx]->key is: %s :: "  
+					"sh_items[idx]->value is: %s\n",
+					sh_items[idx]->key, sh_items[idx]->value);
+				printf("sh_item->key is: %s :: "
+					"sh_item->value is: %s\n", sh_item->key, sh_item->value);
 
+				free_shi(sh_items[idx]);
+				sh_items[idx] = sh_item;
+
+				printf("After Replace:\n");
+				printf("sh_items[idx]->key is: %s :: "  
+					"sh_items[idx]->value is: %s\n",
+					sh_items[idx]->key, sh_items[idx]->value);
+				printf("sh_item->key is: %s :: "
+					"sh_item->value is: %s\n", sh_item->key, sh_item->value);
+			}
+			/* keys dont match */
+			else
+				handle_cllsn(ht, sh_item, idx);
+		}
+		/* more than one item present */
+		else
+		{
+			temp = sh_items[idx];
+			/* loop over list */
+			while (temp)
+			{
+				/* current key match new item key */
+				if (!strcmp(temp->key, sh_item->key))
+				{
+					sh_item->next = temp->next;
+					free_shi(temp);
+					temp = sh_item;
+				}
+				/* current key not match new item key */
+				else
+					temp = temp->next;
+			}
+			if (temp == NULL)
+				handle_cllsn(ht, sh_item, idx);
+		}
+	}
 	/* insert new item in a sorted manner to hash table dll */
 	return (sorted_insert_to_sh(ht, sh_item));
 }
@@ -210,7 +250,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  *
  * @hi: pointer to the item to be added to the hash table
  *
- * @id: index where collisoin is to be handled
+ * @id: idx where collisoin is to be handled
  *
  * Return: (int) 1 on Success, 0 on Failure
  */
@@ -225,8 +265,8 @@ int handle_cllsn(shash_table_t *ht, shash_node_t *hi, unsigned long int id)
 
 int sorted_insert_to_sh(shash_table_t *ht, shash_node_t *sh_item)
 {
-	shash_node_t *temp = NULL;
 
+	printf("I'm within sort insert to sh. That means the might be here\n");
 	/* check for NULL table, free item and return 0 */
 	if (ht == NULL)
 	{
@@ -237,7 +277,7 @@ int sorted_insert_to_sh(shash_table_t *ht, shash_node_t *sh_item)
 	/* check for NULL hash table, free table and return 0 */
 	if (sh_item == NULL)
 	{
-		free_sht(ht);
+		/*free_sht(ht);*/
 		return (0);
 	}
 
@@ -251,35 +291,53 @@ int sorted_insert_to_sh(shash_table_t *ht, shash_node_t *sh_item)
 	/* sort insert otherwise */
 	else
 	{
-		temp = ht->shead;
-		
-		/* compare current key with dll key */
-		while (temp->snext)
-		{
-			if (strcmp(sh_item->key, temp->key) > 0)
-				temp = temp->snext;
-			if (temp == ht->shead && strcmp(sh_item->key, temp->key) < 0)
-			{
-				sh_item->snext = temp;
-				temp->sprev = sh_item;
-				ht->shead = sh_item;
-				shash_table_print(ht);
-				return (1);
-			}
-			else if (strcmp(sh_item->key, temp->key) < 0)
-			{
-				sh_item->sprev = temp->sprev;
-				sh_item->snext = temp;
-				temp->sprev->snext = sh_item;
-				temp->sprev = sh_item;
-				return (1);
-			}
-		}
-		sh_item->sprev = temp;
-		temp->snext = sh_item;
-		ht->stail = sh_item;
-		return (1);
+		return (sins_non_empty_dll(ht, sh_item));
 	}
+}
+
+/**
+ * sins_non_empty_dll - Aux function
+ *
+ * Description: This function sort inserts a node when the list is not empty
+ *
+ * @ht: pointer to the sorted hash table
+ *
+ * @sh_item: new item to be added to the sorted hash table
+ *
+ * Return: 1 on Success, 0 on Failure
+ */
+
+int sins_non_empty_dll(shash_table_t *ht, shash_node_t *sh_item)
+{
+	shash_node_t *temp = NULL;
+
+	temp = ht->shead;
+		
+	/* compare current key with dll key */
+	while (temp->snext)
+	{
+		if (strcmp(sh_item->key, temp->key) > 0)
+			temp = temp->snext;
+		if (temp == ht->shead && strcmp(sh_item->key, temp->key) < 0)
+		{
+			sh_item->snext = temp;
+			temp->sprev = sh_item;
+			ht->shead = sh_item;
+			return (1);
+		}
+		else if (strcmp(sh_item->key, temp->key) < 0)
+		{
+			sh_item->sprev = temp->sprev;
+			sh_item->snext = temp;
+			temp->sprev->snext = sh_item;
+			temp->sprev = sh_item;
+			return (1);
+		}
+	}
+	sh_item->sprev = temp;
+	temp->snext = sh_item;
+	ht->stail = sh_item;
+	return (1);
 }
 
 /**
@@ -392,28 +450,28 @@ void shash_table_delete(shash_table_t *ht)
 
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
-	unsigned long int index;
+	unsigned long int idx;
 	shash_node_t **sh_items = NULL, *temp = NULL;
 
 	if (ht == NULL || key == NULL)
 		return (NULL);
 
-	index = key_index((const unsigned char *)key, ht->size);
-	if (index > ht->size)
+	idx = key_index((const unsigned char *)key, ht->size);
+	if (idx > ht->size)
 		return (NULL);
 
 	sh_items = ht->array;
 
-	if (sh_items[index] == NULL)
+	if (sh_items[idx] == NULL)
 		return (NULL);
 
-	/*single element at index*/
-	if (sh_items[index]->next == NULL)
-		return (sh_items[index]->value);
-	/*linked list at index*/
+	/*single element at idx*/
+	if (sh_items[idx]->next == NULL)
+		return (sh_items[idx]->value);
+	/*linked list at idx*/
 	else
 	{
-		temp = sh_items[index];
+		temp = sh_items[idx];
 		while (temp)
 		{
 			if (strcmp(temp->key, key) == 0)

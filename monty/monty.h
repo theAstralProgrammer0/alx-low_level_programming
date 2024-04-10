@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -37,4 +38,26 @@ typedef struct instruction_s
 } instruction_t;
 
 
+void stack_init(void);
+void execop(int line_number);
+void tokenizer(char *line, const char *delim);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+int isNumber(const char *digitstr);
+/**
+ *
+ */
+typedef struct global_var
+{
+	stack_t **stack;
+	stack_t *top;
+	stack_t *front;
+	stack_t *rear;
+	char **tokens;
+} glob_t;
+
+/* stack pointer global variable*/
+extern glob_t *glob;
+
+void free_glob(glob_t *glob);
 #endif

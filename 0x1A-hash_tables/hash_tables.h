@@ -105,5 +105,6 @@ void free_shi(shash_node_t *sh_item);
 void free_sht(shash_table_t *sh_table);
 int sorted_insert_to_sh(shash_table_t *ht, shash_node_t *sh_item);
 void shash_table_print_rev(const shash_table_t *ht);
+int sins_non_empty_dll(shash_table_t *ht, shash_node_t *sh_item);
 
 #endif

@@ -13,18 +13,13 @@ int main(void)
 	int n = 98;
 	int i;
 
-	printf("%u, %u", a, b);
+	printf("%lu, %lu", a, b);
 
 	for (i = 3; i <= n; i++)
 	{
 		next = a + b;
 
-		if (next < 0)
-		{
-			next = -next;
-		}
-
-		printf(", %u", next);
+		printf(", %lu", next);
 
 		a = b;
 		b = next;
