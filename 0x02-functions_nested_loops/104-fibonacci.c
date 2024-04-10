@@ -2,7 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+/**
+ * add - Auxilliary function
+ *
+ * Description: adds any two number strings together
+ *
+ * @a: first number string
+ *
+ * @b: second number string
+ *
+ * @result: result string
+ *
+ * Return: Nothing
+ */
 void add(char *a, char *b, char *result)
 {
 	int len_a = strlen(a);
@@ -28,12 +40,11 @@ void add(char *a, char *b, char *result)
 		result[k++] = (sum % 10) + '0';
 		carry = sum / 10;
 
-		if (i >= 0) i--;
-		if (j >= 0) j--;
+		(i >= 0) ? i-- : i;
+		(j >= 0) ? j-- : j;
 	}
 	/** append null to end of result string **/
 	result[k] = '\0';
-
 	/** reverse result string **/
 	start = 0;
 	end = k - 1;
@@ -42,12 +53,20 @@ void add(char *a, char *b, char *result)
 		temp = result[start];
 		result[start] = result[end];
 		result[end] = temp;
-
 		start++;
 		end--;
 	}
 }
-	
+
+/**
+ * fibonacci - Auxilliary function
+ *
+ * Description: prints the fibonacci sequence up to the nth value
+ *
+ * @n: nth value
+ *
+ * Return: Nothing
+ */
 void fibonacci(int n)
 {
 	char a[1000] = "1";
@@ -70,6 +89,13 @@ void fibonacci(int n)
 	}
 }
 
+/**
+ * main - Entry Point
+ *
+ * Description: Driver function
+ *
+ * Return: 0 Success, Always
+ */
 int main(void)
 {
 	int n = 98;
