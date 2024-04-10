@@ -1,5 +1,25 @@
 #include <stdio.h>
 
+unsigned int fibonacci(int a, int b, int n, int c) 
+{
+	static unsigned int sum;
+
+	if (c > n)
+	{
+		printf("\n");
+		return (sum);
+	}
+	sum = a + b;
+	if (!c)
+		printf("%u", sum);
+	else
+		printf(", %u", sum);
+	a = b;
+	b = sum;
+	return (fibonacci(a, b, n, c + 1));
+}
+
+
 /**
   * main - Entry Point
   *
@@ -9,19 +29,9 @@
 
 int main(void)
 {
-	unsigned long int a = 1, b = 2, next;
-	int n = 98, i;
+	unsigned int fib;
 
-	printf("%lu, %lu", a, b);
-
-	for (i = 3; i <= n; i++)
-	{
-		next = a + b;
-		printf(", %lu", next);
-		a = b;
-		b = next;
-	}
-	printf("\n");
-
+	fib = fibonacci(0, 1, 98, 0);
+	printf("fib => %u\n", fib);
 	return (0);
 }
