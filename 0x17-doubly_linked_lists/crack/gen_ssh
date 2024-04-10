@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# create destination file for private ssh key
+# generate ssh with credential
+# print the ssh after generating
+# Usage should require  directory, if no directory is entered, default directory
+# will be ~/.ssh
+
+credential=$1
+filename=$2
+dir=$3
+
+# Error handling for running the script
+
+# Check if the directory is not filled
+if [ -z "$dir" ]
+then
+    echo "Storing in '~/.ssh' directory by default"
+    dir=~/.ssh
+
+# Check if filename is not filled
+    if [ -z "$filename" ]
+    then
+	echo "Creating id_rsa by default"
+	filename="id_rsa"
+
+# Check if the credential field is not filled
+	if [ -z "$credential" ]
+	then
+	    echo "Error: Usage: $0 [credential] [filename] [/path/to/dir]"
+	    echo "Cleaning up ..."
+	    echo "Exiting ..."
+	    exit 1
+	fi
+    fi
+fi
+
+file_regex=$filename[0-9]*$
+
+# create numbered file system in the directory based on the filename provided
+./creat_num_files.sh $dir "$filename"
+if [ $? -ne 0 ]
+then
+    exit $?
+fi
+
+# Find the most recent file in the directory matching the regex pattern
+latest=$(ls -v "$dir"|grep $file_regex|tail -1)
+if [ $? -ne 0 ]
+then
+    echo "Error finding most recent file"
+    echo "Exiting ..."
+    exit $?
+fi
+
+echo
+# Generate the ssh key using the ssh-keygen command
+yes|ssh-keygen -t rsa -b 4096 -C "$credential" -f "$dir/$latest" -N ""
+if [ $? -ne 0 ]
+then
+    echo "Error generating ssh key"
+    echo "Exiting ..."
+    exit $?
+fi
+
+# set private key permissions to owner read and write only
+chmod 600 "$dir/$latest"
+if [ $? -eq 0 ]
+then
+    echo
+    echo "File permission set to 600"
+fi
+
+# populate ~/.bashrc file with script to add SSH_AUTH_SOCK env
+echo "if [ -z \"\$SSH_AUTH_SOCK\" ]
+then
+    eval \$(ssh-agent -s)
+    ssh-add "$dir/$latest"
+fi" >> ~/.bashrc
+if [ $? -eq 0 ]
+then
+    echo
+    echo "Successfully set SSH_AUTH_SOCK env"
+else
+    echo
+    echo "Error setting SSH_AUTH_SOCK env"
+fi
+echo
+echo "Finalizing ..."
+
+# run the script to finalize
+source ~/.bashrc
+
+echo
+echo "YOUR PUBLIC SSH KEY:"
+echo
+cat "$dir/$latest.pub"
