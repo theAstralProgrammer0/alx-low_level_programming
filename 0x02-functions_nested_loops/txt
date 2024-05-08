@@ -1,0 +1,1 @@
+Day 17 of #100DaysOfCode. Today, I felt nostalgic, so I went back to my C lang. I optimized my Fibonacci sequence gen. func. using strings to account for big numbers in the sequence. Then I replicated the exact algorithm in JavaScript, and it worked like a charm! Closures helped.
