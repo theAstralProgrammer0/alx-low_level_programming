@@ -10,7 +10,12 @@ int linear_search(int *array, size_t size, int value);
 int binary_search(int *array, size_t size, int value);
 int jump_search(int *array, size_t size, int value);
 int interpolation_search(int *array, size_t size, int value);
+int exponential_search(int *array, size_t size, int value);
 
 /** Auxilliary Functions **/
 void print_array(int *array, int size);
+void print_array_bound(int *array, int l, int r);
+size_t probe(int *array, int low, int high, int value);
+int search_core(int *array, size_t size, int low, int high, int value);
+int bin_search(int *array, int l, int r, int value);
 #endif
