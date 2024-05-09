@@ -7,25 +7,38 @@
  * Description: Prints arrays but mostly sub-arrays
  *
  * @array: pointer to first element in the array
- * @size: size of the array
+ * @l: left boundary of array
+ * @r: right boundary of array
  *
  * Return: Nothing
  */
 void print_array_bound(int *array, int l, int r)
 {
-        int i = l;
+	int i = l;
 
-        while (i <= r)
-        {
-                if (i != r)
-                        printf("%i, ", array[i]);
-                else
-                        printf("%i\n", array[i]);
-                i++;
-        }
+	while (i <= r)
+	{
+		if (i != r)
+			printf("%i, ", array[i]);
+		else
+			printf("%i\n", array[i]);
+		i++;
+	}
 }
 
 
+/**
+ * bin_search - Aux Function
+ *
+ * Description: performs a binary search on an array to match a value
+ *
+ * @array: pointer to the first element of the array to search in
+ * @l: left boundary of array
+ * @r: right boundary of array
+ * @value: value to search for
+ *
+ * Return: index of value FOUND, -1 NOT FOUND
+ */
 int bin_search(int *array, int l, int r, int value)
 {
 	int m;
@@ -34,7 +47,7 @@ int bin_search(int *array, int l, int r, int value)
 	{
 		printf("Searching in array: ");
 		print_array_bound(array, l, r);
-		
+
 		if (array[l] == value)
 			return (l);
 
@@ -52,6 +65,18 @@ int bin_search(int *array, int l, int r, int value)
 	return (-1);
 }
 
+/**
+ * exponential_search - Entry Point
+ *
+ * Description: searches for a value in a sorted array of integers
+ *		using the Exponential search algorithm
+ *
+ * @array: pointer to the first element of the array to search in
+ * @size: number of elements in array
+ * @value: value to search for
+ *
+ * Return: index of value FOUND, -1 NOT FOUND|array = NULL
+ */
 int exponential_search(int *array, size_t size, int value)
 {
 	int i = 1;
@@ -70,6 +95,6 @@ int exponential_search(int *array, size_t size, int value)
 	}
 
 	min_val = min(i, (int)size - 1);
-	printf("Value found between indexes [%i] and [%i]\n", i/2, min_val);
-	return (bin_search(array, i/2, min_val, value));
+	printf("Value found between indexes [%i] and [%i]\n", i / 2, min_val);
+	return (bin_search(array, i / 2, min_val, value));
 }
